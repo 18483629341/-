@@ -29,15 +29,15 @@
 .section .center-box {
   flex: 1;
 }
-.section .CenterContent {
+.section .center-content {
   width: 1005px;
   height: 100%;
   margin: 0 auto;
 }
-.section .CenterHeader {
+.section .center-header {
   height: 228px;
 }
-.section .CenterMain {
+.section .center-main {
   height: 440px;
   transform: scale(0.9);
   transform-origin: 50% 33%;
@@ -65,15 +65,15 @@
 .section .center-box {
   flex: 1;
 }
-.section .CenterContent {
+.section .center-content {
   width: 1005px;
   height: 100%;
   margin: 0 auto;
 }
-.section .CenterHeader {
+.section .center-header {
   height: 228px;
 }
-.section .CenterMain {
+.section .center-main {
   height: 440px;
   transform: scale(0.9);
   transform-origin: 50% 33%;
@@ -162,14 +162,14 @@
   color: #fff;
 }
 /*tab切换 start*/
-.TabsList {
+.tab-list {
   position: absolute;
   width: 210px;
   height: 38px;
   top: 17px;
   left: 60px;
 }
-.TabsList .TabsLi {
+.tab-list .tab-li {
   flex: 1;
   height: 100%;
   line-height: 38px;
@@ -177,16 +177,16 @@
   font-size: 16px;
   text-align: center;
 }
-.TabsList .DataCollection {
+.tab-list .data-collection {
   background: url(../images/home/left_tab_off.png);
 }
-.TabsList .DataServe {
+.tab-list .data-serve {
   background: url(../images/home/right_tab_off.png);
 }
-.TabsList .DataCollection.active {
+.tab-list .data-collection.active {
   background: url(../images/home/left_tab_on.png);
 }
-.TabsList .DataServe.active {
+.tab-list .data-serve.active {
   background: url(../images/home/right_tab_on.png);
 }
 /*列表部分 start*/
@@ -264,7 +264,7 @@
 .right-box .list-li + .list-li {
   margin-top: 20.1px;
 }
-.HeaderCon .item {
+.header-con .item {
   display: inline-block;
   text-align: right;
   color: #fff;
@@ -274,7 +274,7 @@
   width: 50%;
   padding-right: 76px;
 }
-.HeaderCon .num {
+.header-con .num {
   display: inline-block;
   font-size: 30px;
   width: 49%;
@@ -352,14 +352,14 @@
   transform: rotateY(180deg);
 }
 /*绘制光点随着曲线移动  模块 end*/
-.HeaderCon {
+.header-con {
   width: 798px;
   height: 78px;
   margin: 20px auto 0;
   background: url(../images/home/top_bg.png) no-repeat;
   background-size: 100% 100%;
 }
-.DownIconBox {
+.down-icon {
   position: relative;
   width: 40px;
   height: 68px;
@@ -370,7 +370,7 @@
   -moz-animation: downMove 5s infinite;
   -webkit-animation: downMove 5s infinite;
 }
-.DownIconBox.UpSideDown {
+.down-icon.up-side-down {
   margin-top: -10px;
   transform: rotate(180deg);
   animation: upMove 5s infinite;
@@ -438,10 +438,10 @@
   }
 }
 /* 旋转模块  start*/
-.CenterMain {
+.center-main {
   position: relative;
 }
-.RollBottomDiv {
+.roll-bottom-div {
   position: absolute;
   width: 360px;
   height: 102px;
@@ -474,23 +474,23 @@
     transform: rotateX(60deg) rotateZ(180deg);
   }
 }
-.RotateBox {
+.rotate-box {
   width: 1000px;
   height: 380px;
 }
-.RotateBox.outer {
+.rotate-box.outer {
   background: url(../images/home/roll_wai.png);
   background-size: 100% 100%;
 }
-.RotateBox.outer .RotateItemMain {
+.rotate-box.outer .rotate-item-main {
   width: 100%;
   height: 100%;
 }
-.RotateBox.outer .RollName {
+.rotate-box.outer .RollName {
   width: 175px;
   margin-left: -37.5px;
 }
-.RotateBox.inner {
+.rotate-box.inner {
   margin: 90px 220px;
   width: 560px;
   height: 200px;
@@ -499,11 +499,11 @@
   background: url(../images/home/roll_nei.png);
   background-size: 100% 100%;
 }
-.RotateBox.inner .RotateItemMain {
+.rotate-box.inner .rotate-item-main {
   width: 100%;
   height: 100%;
 }
-.RotateParent {
+.rotate-parent {
   width: 100%;
   height: 100%;
   position: relative;
@@ -516,7 +516,7 @@
   border-radius: 50%;
   transform: rotateX(60deg) rotateZ(0deg);
 }
-.RotateItem {
+.rotate-item {
   width: 100px;
   height: 100px;
   background: url(../images/home/blue_roll.png);
@@ -526,19 +526,19 @@
   border-radius: 50%;
   z-index: 2;
 }
-.RotateItem p {
+.rotate-item p {
   color: #fff;
   font-size: 24px;
   font-weight: 700;
   line-height: 100px;
   text-align: center;
 }
-.RotateItem .RollName {
+.rotate-item .RollName {
   color: #92beff;
   font-size: 14px;
   line-height: 27px;
 }
-.RotateItemInner {
+.rotate-item-inner {
   width: 80px;
   height: 80px;
   background: url(../images/home/green_roll.png);
@@ -548,24 +548,24 @@
   border-radius: 50%;
   z-index: 1;
 }
-.RotateItemInner p {
+.rotate-item-inner p {
   color: #fff;
   font-weight: 700;
   font-size: 18px;
   line-height: 80px;
   text-align: center;
 }
-.RotateItemInner .unit {
+.rotate-item-inner .unit {
   color: #00fff0;
 }
-.RotateItemInner .RollName {
+.rotate-item-inner .RollName {
   color: #00fff0;
   font-size: 13px;
   line-height: 24px;
   width: 120px;
   margin-left: -20px;
 }
-.RotateBox.center {
+.rotate-box.center {
   margin: 37px auto;
   width: 304px;
   height: 304px;
@@ -573,7 +573,7 @@
   z-index: 8;
   top: -838px;
 }
-.CenterRoll {
+.center-roll {
   width: 100%;
   height: 100%;
   top: 30px;
@@ -582,7 +582,7 @@
   background: url(../images/home/center_roll.png);
   border-radius: 50%;
 }
-.CenterRoll .CenterItem {
+.center-roll .center-item {
   color: #fff;
   font-size: 26px;
   line-height: 65px;
@@ -590,31 +590,36 @@
   font-weight: 700;
   margin-top: 34px;
 }
-.CenterRoll .CenterNum {
+.center-roll .center-num {
   color: #ffe400;
   font-size: 32px;
   line-height: 50px;
   text-align: center;
 }
-.CenterRoll .CenterNum span {
+.center-roll .center-num span {
   color: #ffe400;
 }
 /* 旋转模块  end*/
 /* 中间底部 */
-.CenterBottom {
-  width: 760px;
+.center-bottom {
+  border: 1px solid red;
+  width: 970px;
+  height: 220px;
   margin: -55px auto 0;
 }
-.LevelDataLi {
+.level-data-list {
+  height: 100%;
+}
+.level-data-li {
   width: 137px;
   height: 170px;
   display: inline-block;
   position: relative;
 }
-.LevelDataLi + .LevelDataLi {
-  margin-left: 122px;
+.level-data-li + .level-data-li {
+  margin-left: 50px;
 }
-.UpIconBox {
+.up-icon {
   width: 40px;
   height: 68px;
   left: 46px;
@@ -625,14 +630,14 @@
   -moz-animation: upMove 5s infinite;
   -webkit-animation: upMove 5s infinite;
 }
-.UpIconBox.UpSideDown {
+.up-icon.up-side-down {
   margin-top: 20px;
   transform: rotate(180deg);
   animation: downMove 5s infinite;
   -moz-animation: downMove 5s infinite;
   -webkit-animation: downMove 5s infinite;
 }
-.ListItem {
+.list-item {
   width: 137px;
   height: 122px;
   text-align: center;
@@ -640,12 +645,12 @@
   background: url(../images/home/bom_bg.png) no-repeat;
   padding-top: 24px;
 }
-.ListItem .ItemNum {
+.list-item .item-num {
   color: #fff;
   font-size: 22px;
   line-height: 38px;
 }
-.ListItem .name {
+.list-item .name {
   color: #00fff0;
   font-size: 18px;
   line-height: 26px;
@@ -669,7 +674,7 @@
   background: #1c3761;
   position: relative;
 }
-.footer .progress .innerRadio {
+.footer .progress .rotate-radio {
   width: 0%;
   height: 100%;
   background: #00fff5;

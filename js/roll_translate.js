@@ -40,7 +40,7 @@ function RollPanel(element) {
 			}		
 			//0.017453293为角度转为弧度的比率值，1度=0.017453293弧度；Math.cos(x),x为弧度
 			var nowRad=parseFloat(simpAngle*0.017453293).toFixed(8);
-			$(element + ' .RotateItem:eq(' + i + ')').css({
+			$(element + ' .rotate-item:eq(' + i + ')').css({
 				'left':this.rx*Math.cos(nowRad)+this.rx-this.sideLength/2+'px',
 				'top':this.ry*Math.sin(nowRad)+this.ry-this.sideLength/2+'px',
 				'transform': 'scale(' + radio + ')'

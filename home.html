@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge" charset="utf-8">
 	<title>内蒙古自治区生态环境大数据管理平台</title>
 	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="./css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="css/home.css" />
 	<script type="text/javascript" src="./js/jquery.min.js"></script>
 	<script type="text/javascript" src="./js/main.js"></script>
@@ -15,7 +16,6 @@
 	<script>
 		$(function () {
 			autoFit();
-			
 		})
 	</script>
 	<header class="header">
@@ -58,10 +58,14 @@
     <!-- 中间主体 -->
 	<section class="section flex-block">
 		<!-- 默认单位 -->
-		<!-- <div class="TabsList flex-block">
-			<div class="TabsLi active DataCollection" id="DataCollection">数据汇聚</div>
-			<div class="TabsLi DataServe" id="DataServe">数据服务</div>
+		<!-- <div class="tab-list flex-block">
+			<div class="tab-li active data-collection" id="data-collection">数据汇聚</div>
+			<div class="tab-li data-serve" id="data-serve">数据服务</div>
 		</div> -->
+		<div class="-list flex-block">
+			<div class="tab-li active data-collection" id="data-collection">数据汇聚</div>
+			<div class="tab-li data-serve" id="data-serve">数据服务</div>
+		</div> 
 		<!-- 默认单位 -->
 		<div class="unit-box">
 			<p>
@@ -142,82 +146,110 @@
 		
 		<!-- 中间所有内容的容器 -->
 		<div class="center-box">
-			<div class="CenterContent">
-				<div class="CenterHeader">
-					<div class="HeaderCon">
+			<div class="center-content">
+				<div class="center-header">
+					<div class="header-con">
 						<p class="item">生态环境部</p>
 						<p class="num">4533271</p>
 					</div>
-					<div class="DownIconBox"></div>
+					<div class="down-icon"></div>
 				</div>
 				<!-- 中间所有旋转模块的容器 -->
-				<div class="CenterMain">
-					<div class="RollBottomDiv">
+				<div class="center-main">
+					<div class="roll-bottom-div">
 						
 					</div>
-					<div class="RotateBox outer">
-						<div class="RotateParent ">
+					<div class="rotate-box outer">
+						<div class="rotate-parent ">
 							<div class="elipse">
 							</div>
 							<!-- 外环旋转球体的div,可以称之为：外环托盘 -->
-							<div class="RotateItemMain" id="OutRotateItemMain">
-								<div class="RotateItem" ><p>21234</p><p class="RollName">环境风险与应急</p></div>
-								<div class="RotateItem" ><p>4901</p><p class="RollName">核与辐射</p></div>
-								<div class="RotateItem" ><p>5601</p><p class="RollName">自然生态</p></div>
-								<div class="RotateItem" ><p>61011</p><p class="RollName">环境质量信息</p></div>
-								<div class="RotateItem" ><p>4901</p><p class="RollName">污染源</p></div>
-								<div class="RotateItem" ><p>5601</p><p class="RollName">环保科技与产业</p></div>
-								<div class="RotateItem" ><p>4901</p><p class="RollName">政务信息</p></div>
-								<div class="RotateItem" ><p>5601</p><p class="RollName">环保相关信息</p></div>
-								<div class="RotateItem" ><p>5601</p><p class="RollName">政策法则标准</p></div>
+							<div class="rotate-item-main" id="out-rotate-item-main">
+								<div class="rotate-item" ><p>21234</p><p class="RollName">环境风险与应急</p></div>
+								<div class="rotate-item" ><p>4901</p><p class="RollName">核与辐射</p></div>
+								<div class="rotate-item" ><p>5601</p><p class="RollName">自然生态</p></div>
+								<div class="rotate-item" ><p>61011</p><p class="RollName">环境质量信息</p></div>
+								<div class="rotate-item" ><p>4901</p><p class="RollName">污染源</p></div>
+								<div class="rotate-item" ><p>5601</p><p class="RollName">环保科技与产业</p></div>
+								<div class="rotate-item" ><p>4901</p><p class="RollName">政务信息</p></div>
+								<div class="rotate-item" ><p>5601</p><p class="RollName">环保相关信息</p></div>
+								<div class="rotate-item" ><p>5601</p><p class="RollName">政策法则标准</p></div>
 							</div>
 						</div>
 					</div>
-					<div class="RotateBox inner">
-						<div class="RotateParent ">
+					<div class="rotate-box inner">
+						<div class="rotate-parent ">
 							<div class="elipse">
 							</div>
 							<!-- 内环旋转球体的div,可以称之为：内环托盘 -->
-							<div class="RotateItemMain" id="InRotateItemMain">
-								<div class="RotateItem RotateItemInner" ><p>3301<span class="unit">个</span></p><p class="RollName">水质断面</p></div>
-								<div class="RotateItem RotateItemInner" ><p>3301<span class="unit">个</span></p><p class="RollName">空气测点</p></div>
-								<div class="RotateItem RotateItemInner" ><p>490<span class="unit">个</span></p><p class="RollName">声环境测点</p></div>
-								<div class="RotateItem RotateItemInner" ><p>490<span class="unit">个</span></p><p class="RollName">辐射测点</p></div>
-								<div class="RotateItem RotateItemInner" ><p>560<span class="unit">个</span></p><p class="RollName">固定源</p></div>
-								<div class="RotateItem RotateItemInner" ><p>560<span class="unit">个</span></p><p class="RollName">辐射源</p></div>
+							<div class="rotate-item-main" id="in-rotate-item-main">
+								<div class="rotate-item rotate-item-inner" ><p>3301<span class="unit">个</span></p><p class="RollName">水质断面</p></div>
+								<div class="rotate-item rotate-item-inner" ><p>3301<span class="unit">个</span></p><p class="RollName">空气测点</p></div>
+								<div class="rotate-item rotate-item-inner" ><p>490<span class="unit">个</span></p><p class="RollName">声环境测点</p></div>
+								<div class="rotate-item rotate-item-inner" ><p>490<span class="unit">个</span></p><p class="RollName">辐射测点</p></div>
+								<div class="rotate-item rotate-item-inner" ><p>560<span class="unit">个</span></p><p class="RollName">固定源</p></div>
+								<div class="rotate-item rotate-item-inner" ><p>560<span class="unit">个</span></p><p class="RollName">辐射源</p></div>
 							</div>
 						</div>
 					</div>
-					<div class="RotateBox center">
-						<div class="CenterRoll">
-							 <p class="CenterItem">大数据平台</p>
-							 <p class="CenterNum"><span id="ListNum">234,566</span>条</p>
-							 <p class="CenterNum"><span id="KbNum">345,678,900</span>KB</p>
+					<div class="rotate-box center">
+						<div class="center-roll">
+							 <p class="center-item">大数据平台</p>
+							 <p class="center-num"><span class="list-num">234,566</span>条</p>
+							 <p class="center-num"><span class="kb-num">345,678,900</span>KB</p>
 						</div>
 					</div>
 					
 				</div>
 				<!-- 中间底部 -->
-				<div class="CenterBottom">
-					<ol class="LevelDataList">
-						<li class="LevelDataLi">
-							<div class="UpIconBox"></div>
-							<div class="ListItem">
-								<p class="ItemNum">12681</p>
+				<div class="center-bottom">
+					<ol class="level-data-list">
+						<li class="level-data-li">
+							<div class="up-icon"></div>
+							<div class="list-item">
+								<p class="item-num">12681</p>
 								<p class="name">盟市</p>
 							</div>
 						</li>
-						<li class="LevelDataLi">
-							<div class="UpIconBox"></div>
-							<div class="ListItem">
-								<p class="ItemNum">12681</p>
+						<li class="level-data-li">
+							<div class="up-icon"></div>
+							<div class="list-item">
+								<p class="item-num">12681</p>
 								<p class="name">旗县</p>
 							</div>
 						</li>
-						<li class="LevelDataLi">
-							<div class="UpIconBox"></div>
-							<div class="ListItem">
-								<p class="ItemNum">12681</p>
+						<li class="level-data-li">
+							<div class="up-icon"></div>
+							<div class="list-item">
+								<p class="item-num">12681</p>
+								<p class="name">企业</p>
+							</div>
+						</li>
+						<li class="level-data-li">
+							<div class="up-icon"></div>
+							<div class="list-item">
+								<p class="item-num">12681</p>
+								<p class="name">企业</p>
+							</div>
+						</li>
+						<li class="level-data-li">
+							<div class="up-icon"></div>
+							<div class="list-item">
+								<p class="item-num">12681</p>
+								<p class="name">企业</p>
+							</div>
+						</li>
+						<li class="level-data-li">
+							<div class="up-icon"></div>
+							<div class="list-item">
+								<p class="item-num">12681</p>
+								<p class="name">企业</p>
+							</div>
+						</li>
+						<li class="level-data-li">
+							<div class="up-icon"></div>
+							<div class="list-item">
+								<p class="item-num">12681</p>
 								<p class="name">企业</p>
 							</div>
 						</li>
@@ -294,16 +326,17 @@
 	</section>
 	<!-- 底部 -->
 	<footer class="footer flex-block">
-		<p class="point" id="LeftPoint">数据汇聚</p>
+		<p class="point left-point" id="left-point">数据汇聚</p>
 		<div class="progress flex1">
-			<div class="innerRadio">
+			<div class="rotate-radio">
 			</div>
 			<div class="light"></div>
 		</div>
-		<p class="point" id="RightPoint">数据服务</p>
+		<p class="point right-point" id="right-point">数据服务</p>
 	</footer>
 
 	<script type="text/javascript" src="./js/roll_translate.js"></script>
+	<script type="text/javascript" src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script type="text/javascript" src="./js/home.js"></script>
 </body>
 

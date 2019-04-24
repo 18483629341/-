@@ -154,8 +154,8 @@ function CenterValueLoop(){
      var i=0;
      //循环数据播放
      setInterval(function(){
-        $('#ListNum').html(ListNumArr[i]);
-        $('#KbNum').html(KbNumArr[i]);
+        $('.list-num').html(ListNumArr[i]);
+        $('.kb-num').html(KbNumArr[i]);
         if(i>=ListNumArr.length){
             i=0
         }else{
