@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" charset="utf-8">
+	<title>内蒙古自治区生态环境大数据管理平台</title>
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/home.css" />
+	<script type="text/javascript" src="./js/jquery.min.js"></script>
+	<script type="text/javascript" src="./js/main.js"></script>
+</head>
+
+<body class="body1">
+	<script>
+		$(function () {
+			autoFit();
+			
+		})
+	</script>
+	<header class="header">
+		<p class="logo">
+			<img src="./images/home/logo.png" />内蒙古自治区生态环境大数据管理平台
+		</p>
+		<!-- 头部导航 -->
+		<div class="nav">
+			<ul>
+				<li class="nav-li active">
+					<p class="nav-theme">首页</p>
+				</li>
+				<li class="nav-li">
+					<p class="nav-theme">资源目录</p>
+				</li>
+				<li class="nav-li">
+					<p class="nav-theme">数据集成交换</p>
+				</li>
+				<li class="nav-li">
+					<p class="nav-theme">数据治理</p>
+				</li>
+				<li class="nav-li">
+					<p class="nav-theme">数据服务</p>
+				</li>
+				<li class="nav-li">
+					<p class="nav-theme">数据监控</p>
+				</li>
+				<li class="nav-li">
+					<p class="nav-theme">运维管理</p>
+				</li>
+
+			</ul>
+			<!-- <div class="people-info">
+				<i class="line"></i>
+				<p>欢迎您Admin</p>
+				<a href="#" title="注销"></a>
+			</div> -->
+		</div>
+	</header>
+    <!-- 中间主体 -->
+	<section class="section flex-block">
+		<!-- 默认单位 -->
+		<!-- <div class="TabsList flex-block">
+			<div class="TabsLi active DataCollection" id="DataCollection">数据汇聚</div>
+			<div class="TabsLi DataServe" id="DataServe">数据服务</div>
+		</div> -->
+		<!-- 默认单位 -->
+		<div class="unit-box">
+			<p>
+				<span class='name'>默认单位：</span>
+			    <span class='unit'>条</span>
+			</p>
+		</div>
+
+		<!-- 左列表 -->
+		<div class="list-box left-box">
+			<p class="list-header">业务数据</p>
+			<ul class="list-box">
+				<li class="list-li">
+					<span class="item">空气质量监测</span>
+					<span class="num">1234</span>
+				</li>
+				<li class="list-li">
+					<span class="item">空气质量预报</span>
+					<span class="num">123452</span>
+				</li>
+				<li class="list-li">
+					<span class="item">地表水环境监测</span>
+					<span class="num">13452</span>
+				</li>
+				<li class="list-li">
+					<span class="item">排污许可证</span>
+					<span class="num">123452</span>
+				</li>
+				<li class="list-li">
+					<span class="item">污染源自动监控</span>
+					<span class="num">12352</span>
+				</li>
+
+				<li class="list-li">
+					<span class="item">企业自行检测</span>
+					<span class="num">123452</span>
+				</li>
+				<li class="list-li">
+					<span class="item">二污普</span>
+					<span class="num">12345</span>
+				</li>
+				<li class="list-li">
+					<span class="item">环境统计</span>
+					<span class="num">123452</span>
+				</li>
+				<li class="list-li">
+					<span class="item">监督性监测</span>
+					<span class="num">23452</span>
+				</li>
+				<li class="list-li">
+					<span class="item">移动执法</span>
+					<span class="num">67848</span>
+				</li>
+			</ul>
+		</div>
+
+		<!-- 左边线条组合 -->
+		<div class="line-list">
+			<!-- 绘制光点随着曲线移动  模块 start-->
+			<div class="quadratic-curve-box ">
+				<canvas class="quadratic-curve" id="canvas" width=142 height=650></canvas>
+				<div class="lignt-box" id="lignt-box">
+					<span class="line-icon line-icon0" ></span>
+					<span class="line-icon line-icon1" ></span>
+					<span class="line-icon line-icon2" ></span>
+					<span class="line-icon line-icon3" ></span>
+					<span class="line-icon line-icon4" ></span>
+					<span class="line-icon line-icon5" ></span>
+					<span class="line-icon line-icon6" ></span>
+					<span class="line-icon line-icon7" ></span>
+					<span class="line-icon line-icon8" ></span>
+					<span class="line-icon line-icon9" ></span>
+				</div>
+
+			</div>
+            <!-- 绘制光点随着曲线移动  模块 end-->
+		</div>
+		
+		<!-- 中间所有内容的容器 -->
+		<div class="center-box">
+			<div class="CenterContent">
+				<div class="CenterHeader">
+					<div class="HeaderCon">
+						<p class="item">生态环境部</p>
+						<p class="num">4533271</p>
+					</div>
+					<div class="DownIconBox"></div>
+				</div>
+				<!-- 中间所有旋转模块的容器 -->
+				<div class="CenterMain">
+					<div class="RollBottomDiv">
+						
+					</div>
+					<div class="RotateBox outer">
+						<div class="RotateParent ">
+							<div class="elipse">
+							</div>
+							<!-- 外环旋转球体的div,可以称之为：外环托盘 -->
+							<div class="RotateItemMain" id="OutRotateItemMain">
+								<div class="RotateItem" ><p>21234</p><p class="RollName">环境风险与应急</p></div>
+								<div class="RotateItem" ><p>4901</p><p class="RollName">核与辐射</p></div>
+								<div class="RotateItem" ><p>5601</p><p class="RollName">自然生态</p></div>
+								<div class="RotateItem" ><p>61011</p><p class="RollName">环境质量信息</p></div>
+								<div class="RotateItem" ><p>4901</p><p class="RollName">污染源</p></div>
+								<div class="RotateItem" ><p>5601</p><p class="RollName">环保科技与产业</p></div>
+								<div class="RotateItem" ><p>4901</p><p class="RollName">政务信息</p></div>
+								<div class="RotateItem" ><p>5601</p><p class="RollName">环保相关信息</p></div>
+								<div class="RotateItem" ><p>5601</p><p class="RollName">政策法则标准</p></div>
+							</div>
+						</div>
+					</div>
+					<div class="RotateBox inner">
+						<div class="RotateParent ">
+							<div class="elipse">
+							</div>
+							<!-- 内环旋转球体的div,可以称之为：内环托盘 -->
+							<div class="RotateItemMain" id="InRotateItemMain">
+								<div class="RotateItem RotateItemInner" ><p>3301<span class="unit">个</span></p><p class="RollName">水质断面</p></div>
+								<div class="RotateItem RotateItemInner" ><p>3301<span class="unit">个</span></p><p class="RollName">空气测点</p></div>
+								<div class="RotateItem RotateItemInner" ><p>490<span class="unit">个</span></p><p class="RollName">声环境测点</p></div>
+								<div class="RotateItem RotateItemInner" ><p>490<span class="unit">个</span></p><p class="RollName">辐射测点</p></div>
+								<div class="RotateItem RotateItemInner" ><p>560<span class="unit">个</span></p><p class="RollName">固定源</p></div>
+								<div class="RotateItem RotateItemInner" ><p>560<span class="unit">个</span></p><p class="RollName">辐射源</p></div>
+							</div>
+						</div>
+					</div>
+					<div class="RotateBox center">
+						<div class="CenterRoll">
+							 <p class="CenterItem">大数据平台</p>
+							 <p class="CenterNum"><span id="ListNum">234,566</span>条</p>
+							 <p class="CenterNum"><span id="KbNum">345,678,900</span>KB</p>
+						</div>
+					</div>
+					
+				</div>
+				<!-- 中间底部 -->
+				<div class="CenterBottom">
+					<ol class="LevelDataList">
+						<li class="LevelDataLi">
+							<div class="UpIconBox"></div>
+							<div class="ListItem">
+								<p class="ItemNum">12681</p>
+								<p class="name">盟市</p>
+							</div>
+						</li>
+						<li class="LevelDataLi">
+							<div class="UpIconBox"></div>
+							<div class="ListItem">
+								<p class="ItemNum">12681</p>
+								<p class="name">旗县</p>
+							</div>
+						</li>
+						<li class="LevelDataLi">
+							<div class="UpIconBox"></div>
+							<div class="ListItem">
+								<p class="ItemNum">12681</p>
+								<p class="name">企业</p>
+							</div>
+						</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+
+		<!-- 右边线条组合 -->
+		<div class="line-list right-line-list">
+			<!-- 绘制光点随着曲线移动  模块 start-->
+			<div class="quadratic-curve-box quadratic-curve-box-right">
+				
+				<canvas class="quadratic-curve" id="canvas2" width=142 height=650></canvas>
+				<div class="lignt-box" id="lignt-box-right">
+					<span class="line-icon line-icon0"></span>
+					<span class="line-icon line-icon1"></span>
+					<span class="line-icon line-icon2"></span>
+					<span class="line-icon line-icon3"></span>
+					<span class="line-icon line-icon4"></span>
+					<span class="line-icon line-icon5"></span>
+					<span class="line-icon line-icon6"></span>
+					<span class="line-icon line-icon7"></span>
+                    <span class="line-icon line-icon8"></span>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- 右列表 -->
+		<div class="list-box right-box">
+			<p class="list-header">外部数据</p>
+			<ul class="list-box">
+				<li class="list-li">
+					<span class="num">123452</span>
+					<span class="item">气象数据</span>
+				</li>
+				<li class="list-li">
+					<span class="num">123452</span>
+					<span class="item">水文水利</span>
+				</li>
+				<li class="list-li">
+					<span class="num">123452</span>
+					<span class="item">土地利用</span>
+				</li>
+				<li class="list-li">
+					<span class="num">123452</span>
+					<span class="item">遥感数据</span>
+				</li>
+
+				<li class="list-li">
+					<span class="num">123452</span>
+					<span class="item">工商数据</span>
+				</li>
+				<li class="list-li">
+					<span class="num">123452</span>
+					<span class="item">税务数据</span>
+				</li>
+				<li class="list-li">
+					<span class="num">123452</span>
+					<span class="item">规划</span>
+				</li>
+				<li class="list-li">
+					<span class="num">123452</span>
+					<span class="item">能源</span>
+				</li>
+				<li class="list-li">
+					<span class="num">123452</span>
+					<span class="item">农业</span>
+				</li>
+
+			</ul>
+		</div>
+	</section>
+	<!-- 底部 -->
+	<footer class="footer flex-block">
+		<p class="point" id="LeftPoint">数据汇聚</p>
+		<div class="progress flex1">
+			<div class="innerRadio">
+			</div>
+			<div class="light"></div>
+		</div>
+		<p class="point" id="RightPoint">数据服务</p>
+	</footer>
+
+	<script type="text/javascript" src="./js/roll_translate.js"></script>
+	<script type="text/javascript" src="./js/home.js"></script>
+</body>
+
+</html>

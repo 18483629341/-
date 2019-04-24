@@ -1,0 +1,691 @@
+.body1 {
+  width: 1920px;
+  overflow-y: scroll;
+  background-color: #00052f;
+  background-image: url(../images/home/all_bg.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  overflow-x: hidden;
+  background-position: center -110px;
+}
+.body1::-webkit-scrollbar {
+  display: none;
+}
+/* 框架布局*/
+.section {
+  padding: 0 50px;
+}
+.section .list-box {
+  width: 235px;
+}
+.section .leftListBox {
+  width: 100px;
+  min-height: 720px;
+}
+.section .line-list {
+  width: 142px;
+  margin-top: 140px;
+}
+.section .center-box {
+  flex: 1;
+}
+.section .CenterContent {
+  width: 1005px;
+  height: 100%;
+  margin: 0 auto;
+}
+.section .CenterHeader {
+  height: 228px;
+}
+.section .CenterMain {
+  height: 440px;
+  transform: scale(0.9);
+  transform-origin: 50% 33%;
+}
+.footer {
+  width: 100%;
+  padding: 0 60px;
+  height: 50px;
+}
+/* 框架布局*/
+.section {
+  padding: 0 50px;
+}
+.section .ListBox {
+  width: 235px;
+}
+.section .leftListBox {
+  width: 100px;
+  min-height: 720px;
+}
+.section .line-list {
+  width: 142px;
+  margin-top: 140px;
+}
+.section .center-box {
+  flex: 1;
+}
+.section .CenterContent {
+  width: 1005px;
+  height: 100%;
+  margin: 0 auto;
+}
+.section .CenterHeader {
+  height: 228px;
+}
+.section .CenterMain {
+  height: 440px;
+  transform: scale(0.9);
+  transform-origin: 50% 33%;
+}
+.footer {
+  width: 100%;
+  padding: 0 60px;
+  height: 50px;
+}
+/*导航*/
+.header {
+  padding: 10px 60px;
+  height: 80px;
+  background: #00052f;
+  background-size: 100% 100%;
+  border-bottom: 1px solid #1f2550;
+}
+.header .logo {
+  font-size: 28px;
+  color: #ffffff;
+  line-height: 60px;
+  float: left;
+}
+.header .logo img {
+  padding-right: 10px;
+  vertical-align: -12px;
+}
+.header .nav {
+  float: right;
+}
+.header .nav ul {
+  margin-top: 14px;
+  float: left;
+}
+.header .nav ul li {
+  float: left;
+  cursor: pointer;
+}
+.nav-li.active {
+  border-bottom: 1px solid #00fff6;
+}
+.nav-li.active .nav-theme {
+  color: #00fff6;
+}
+.nav-li {
+  padding-top: 7px;
+}
+.nav-li .nav-theme {
+  line-height: 24px;
+  height: 24px;
+  font-size: 14px;
+  color: #ffffff;
+}
+.nav-li img {
+  display: block;
+  margin: 2px auto;
+  width: 22px;
+}
+.nav-li + .nav-li {
+  margin-left: 45px;
+}
+/* section 部分*/
+.section {
+  padding: 0 60px;
+  overflow: hidden;
+  position: relative;
+}
+.section .IndexMainTab {
+  width: 144px;
+  float: left;
+  height: 100%;
+}
+.unit-box {
+  width: 200px;
+  position: absolute;
+  height: 22px;
+  line-height: 22px;
+  top: 14px;
+  right: 60px;
+  text-align: right;
+}
+.unit-box .name {
+  color: #bec0d2;
+}
+.unit-box .unit {
+  color: #fff;
+}
+/*tab切换 start*/
+.TabsList {
+  position: absolute;
+  width: 210px;
+  height: 38px;
+  top: 17px;
+  left: 60px;
+}
+.TabsList .TabsLi {
+  flex: 1;
+  height: 100%;
+  line-height: 38px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+.TabsList .DataCollection {
+  background: url(../images/home/left_tab_off.png);
+}
+.TabsList .DataServe {
+  background: url(../images/home/right_tab_off.png);
+}
+.TabsList .DataCollection.active {
+  background: url(../images/home/left_tab_on.png);
+}
+.TabsList .DataServe.active {
+  background: url(../images/home/right_tab_on.png);
+}
+/*列表部分 start*/
+.list-header {
+  margin-bottom: 22px;
+  margin-top: 70px;
+  width: 253px;
+  height: 49px;
+  line-height: 49px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+.list-li {
+  font-weight: 700;
+  height: 54px;
+  line-height: 54px;
+}
+.item {
+  width: 61%;
+  display: inline-block;
+  font-size: 16px;
+  color: #92beff;
+  text-align: left;
+  font-weight: 700;
+}
+.num {
+  width: 36%;
+  display: inline-block;
+  text-align: right;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.left-box {
+  margin-right: 5px;
+}
+.left-box .list-header {
+  padding-left: 14px;
+  background: url('../images/home/left_title_bg.png');
+}
+.left-box .list-li {
+  background: url('../images/home/left_box_bg.png');
+  background-size: 100% 100%;
+}
+.left-box .list-li .item {
+  padding-left: 20px;
+}
+.left-box .list-li .num {
+  padding-right: 20px;
+}
+.left-box .list-li + .list-li {
+  margin-top: 12px;
+}
+.right-box {
+  margin-left: 5px;
+}
+.right-box .list-header {
+  padding-right: 28px;
+  text-align: right;
+  background: url('../images/home/right_title_bg.png');
+}
+.right-box .list-li {
+  background: url('../images/home/right_box_bg.png');
+  background-size: 100% 100%;
+}
+.right-box .list-li .item {
+  padding-right: 20px;
+  text-align: right;
+}
+.right-box .list-li .num {
+  padding-left: 20px;
+  text-align: left;
+}
+.right-box .list-li + .list-li {
+  margin-top: 20.1px;
+}
+.HeaderCon .item {
+  display: inline-block;
+  text-align: right;
+  color: #fff;
+  font-size: 20px;
+  line-height: 65px;
+  padding-left: 60px;
+  width: 50%;
+  padding-right: 76px;
+}
+.HeaderCon .num {
+  display: inline-block;
+  font-size: 30px;
+  width: 49%;
+  line-height: 72px;
+  text-align: left;
+  padding-left: 76px;
+  color: #00fff0;
+}
+/*列表部分 end*/
+/* 绘制光点随着曲线移动  模块 start*/
+.quadratic-curve-box {
+  width: 142px;
+  height: 650px;
+  position: relative;
+}
+.quadratic-curve {
+  width: 142px;
+  height: 650px;
+  position: absolute;
+}
+.lignt-box {
+  width: 100%;
+  height: 650px;
+  z-index: 2;
+  position: relative;
+}
+.line-icon {
+  display: inline-block;
+  width: 30px ;
+  height: 14px;
+  background: url(../images/home/gu_dot.png) no-repeat;
+  position: absolute;
+}
+.line-icon0 {
+  left: 0;
+  top: 36px;
+}
+.line-icon1 {
+  left: 0;
+  top: 108px;
+}
+.line-icon2 {
+  left: 0;
+  top: 180px;
+}
+.line-icon3 {
+  left: 0;
+  top: 252px;
+}
+.line-icon4 {
+  left: 0;
+  top: 324px;
+}
+.line-icon5 {
+  left: 0;
+  top: 396px;
+}
+.line-icon6 {
+  left: 0;
+  top: 468px;
+}
+.line-icon7 {
+  left: 0;
+  top: 540px;
+}
+.line-icon8 {
+  left: 0;
+  top: 612px;
+}
+.line-icon9 {
+  left: 0;
+  top: 650px;
+}
+.right-line-list {
+  transform: rotateY(180deg);
+}
+/*绘制光点随着曲线移动  模块 end*/
+.HeaderCon {
+  width: 798px;
+  height: 78px;
+  margin: 20px auto 0;
+  background: url(../images/home/top_bg.png) no-repeat;
+  background-size: 100% 100%;
+}
+.DownIconBox {
+  position: relative;
+  width: 40px;
+  height: 68px;
+  margin: 0 auto;
+  background: url(../images/home/down.png) no-repeat;
+  background-size: 100% 100%;
+  animation: downMove 5s infinite;
+  -moz-animation: downMove 5s infinite;
+  -webkit-animation: downMove 5s infinite;
+}
+.DownIconBox.UpSideDown {
+  margin-top: -10px;
+  transform: rotate(180deg);
+  animation: upMove 5s infinite;
+  -moz-animation: upMove 5s infinite;
+  -webkit-animation: upMove 5s infinite;
+}
+@keyframes downMove {
+  from {
+    top: -20px;
+    opacity: .2;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+@-moz-keyframes downMove {
+  from {
+    top: -20px;
+    opacity: .2;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes downMove {
+  from {
+    top: -20px;
+    opacity: .2;
+  }
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+@keyframes upMove {
+  from {
+    top: 30px;
+    opacity: .2;
+  }
+  to {
+    top: 10px;
+    opacity: 1;
+  }
+}
+@-moz-keyframes upMove {
+  from {
+    top: 30px;
+    opacity: .2;
+  }
+  to {
+    top: 10px;
+    opacity: 1;
+  }
+}
+@-webkit-keyframes upMove {
+  from {
+    top: 30px;
+    opacity: .2;
+  }
+  to {
+    top: 10px;
+    opacity: 1;
+  }
+}
+/* 旋转模块  start*/
+.CenterMain {
+  position: relative;
+}
+.RollBottomDiv {
+  position: absolute;
+  width: 360px;
+  height: 102px;
+  top: 270px;
+  left: 323px;
+  background: url('../images/home/roll_di.png') no-repeat;
+  background-size: 100% 100%;
+}
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotateX(60deg) rotateZ(-180deg);
+  }
+  to {
+    -webkit-transform: rotateX(60deg) rotateZ(180deg);
+  }
+}
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotateX(60deg) rotateZ(-180deg);
+  }
+  to {
+    -moz-transform: rotateX(60deg) rotateZ(180deg);
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotateX(60deg) rotateZ(-180deg);
+  }
+  to {
+    transform: rotateX(60deg) rotateZ(180deg);
+  }
+}
+.RotateBox {
+  width: 1000px;
+  height: 380px;
+}
+.RotateBox.outer {
+  background: url(../images/home/roll_wai.png);
+  background-size: 100% 100%;
+}
+.RotateBox.outer .RotateItemMain {
+  width: 100%;
+  height: 100%;
+}
+.RotateBox.outer .RollName {
+  width: 175px;
+  margin-left: -37.5px;
+}
+.RotateBox.inner {
+  margin: 90px 220px;
+  width: 560px;
+  height: 200px;
+  position: relative;
+  top: -388px;
+  background: url(../images/home/roll_nei.png);
+  background-size: 100% 100%;
+}
+.RotateBox.inner .RotateItemMain {
+  width: 100%;
+  height: 100%;
+}
+.RotateParent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 50%;
+}
+.elipse {
+  width: 100%;
+  height: 200%;
+  position: absolute;
+  border-radius: 50%;
+  transform: rotateX(60deg) rotateZ(0deg);
+}
+.RotateItem {
+  width: 100px;
+  height: 100px;
+  background: url(../images/home/blue_roll.png);
+  background-size: 100% 100%;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  z-index: 2;
+}
+.RotateItem p {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 100px;
+  text-align: center;
+}
+.RotateItem .RollName {
+  color: #92beff;
+  font-size: 14px;
+  line-height: 27px;
+}
+.RotateItemInner {
+  width: 80px;
+  height: 80px;
+  background: url(../images/home/green_roll.png);
+  background-size: 100% 100%;
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  z-index: 1;
+}
+.RotateItemInner p {
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 80px;
+  text-align: center;
+}
+.RotateItemInner .unit {
+  color: #00fff0;
+}
+.RotateItemInner .RollName {
+  color: #00fff0;
+  font-size: 13px;
+  line-height: 24px;
+  width: 120px;
+  margin-left: -20px;
+}
+.RotateBox.center {
+  margin: 37px auto;
+  width: 304px;
+  height: 304px;
+  position: relative;
+  z-index: 8;
+  top: -838px;
+}
+.CenterRoll {
+  width: 100%;
+  height: 100%;
+  top: 30px;
+  left: 30px;
+  padding-top: 20px;
+  background: url(../images/home/center_roll.png);
+  border-radius: 50%;
+}
+.CenterRoll .CenterItem {
+  color: #fff;
+  font-size: 26px;
+  line-height: 65px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 34px;
+}
+.CenterRoll .CenterNum {
+  color: #ffe400;
+  font-size: 32px;
+  line-height: 50px;
+  text-align: center;
+}
+.CenterRoll .CenterNum span {
+  color: #ffe400;
+}
+/* 旋转模块  end*/
+/* 中间底部 */
+.CenterBottom {
+  width: 760px;
+  margin: -55px auto 0;
+}
+.LevelDataLi {
+  width: 137px;
+  height: 170px;
+  display: inline-block;
+  position: relative;
+}
+.LevelDataLi + .LevelDataLi {
+  margin-left: 122px;
+}
+.UpIconBox {
+  width: 40px;
+  height: 68px;
+  left: 46px;
+  background: url(../images/home/up.png) no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  animation: upMove 5s infinite;
+  -moz-animation: upMove 5s infinite;
+  -webkit-animation: upMove 5s infinite;
+}
+.UpIconBox.UpSideDown {
+  margin-top: 20px;
+  transform: rotate(180deg);
+  animation: downMove 5s infinite;
+  -moz-animation: downMove 5s infinite;
+  -webkit-animation: downMove 5s infinite;
+}
+.ListItem {
+  width: 137px;
+  height: 122px;
+  text-align: center;
+  margin-top: 62px;
+  background: url(../images/home/bom_bg.png) no-repeat;
+  padding-top: 24px;
+}
+.ListItem .ItemNum {
+  color: #fff;
+  font-size: 22px;
+  line-height: 38px;
+}
+.ListItem .name {
+  color: #00fff0;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 700;
+}
+/* 中间底部 end*/
+/* footer */
+.footer .point {
+  min-width: 110px;
+  padding: 0 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 50px;
+  cursor: pointer;
+}
+.footer .progress {
+  width: 100%;
+  height: 4px;
+  margin-top: 23px;
+  background: #1c3761;
+  position: relative;
+}
+.footer .progress .innerRadio {
+  width: 0%;
+  height: 100%;
+  background: #00fff5;
+}
+.footer .progress .light {
+  position: absolute;
+  width: 34px;
+  height: 33px;
+  left: 0%;
+  background: url(../images/home/light.png) no-repeat;
+  margin-left: -10px;
+  margin-top: -19px;
+}
+.footer .point:first-child {
+  text-align: left;
+}
+.footer .point:last-child {
+  text-align: right;
+}

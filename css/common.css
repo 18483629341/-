@@ -1,29 +1,38 @@
-html,
-body,
-div,
-span,
-a,
+/* CSS Document */
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
 ul,
 li,
+span,
 p,
-img,
-iframe,
-sub,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-  margin: 0;
+h6,
+a,
+dl,
+dt,
+dd,
+input {
   padding: 0;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  /* Firefox */
-  -webkit-box-sizing: border-box;
-  /* Safari */
+  margin: 0;
+  list-style: none;
+  color: #333;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'Microsoft yahei';
 }
-.FlexBlock {
+img {
+  vertical-align: middle;
+  border: 0;
+}
+.flex-block {
   display: flex;
   display: -webkit-box;
   display: -moz-box;
@@ -32,25 +41,6 @@ h6 {
 }
 .flex1 {
   flex: 1;
-}
-html,
-body {
-  width: 100%;
-  height: 100%;
-  box-sizing: content-box;
-  font-family: "Microsoft YaHei";
-  font-size: 14px;
-  flex-direction: column;
-  -webkit-flex-direction: column;
-}
-p,
-img {
-  margin: 0;
-  padding: 0;
-}
-a {
-  text-decoration: none;
-  color: #3f3f3f;
 }
 .InlineBlock {
   display: inline-block;
@@ -67,56 +57,12 @@ a {
 .AlignRight {
   text-align: right!important;
 }
-a,
-a:link {
-  color: #333;
-  text-decoration: none;
+.icon {
+  display: inline-block;
 }
-a:hover {
-  color: #0489e5;
-  text-decoration: none;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: 14px;
-  font-weight: normal;
-  color: inherit;
-}
-ul,
-ol,
-li {
-  list-style: none;
+body {
   padding: 0;
   margin: 0;
-}
-table {
-  border-collapse: collapse;
-}
-input::-webkit-input-placeholder {
-  /* WebKit, Blink, Edge */
-  /* placeholder颜色  */
-  color: #d6d6d6;
-}
-input:-moz-placeholder {
-  /* Mozilla Firefox 4 to 18 */
-  color: #d6d6d6;
-}
-input::-moz-placeholder {
-  /* Mozilla Firefox 19+ */
-  color: #aaa;
-}
-input:-ms-input-placeholder {
-  /* Internet Explorer 10-11 */
-  color: #d6d6d6;
-}
-input::-internal-autofill-selected {
-  background-color: #fff!important;
-}
-input:focus {
-  border: none;
-  outline: none;
+  font-family: 'Microsoft yahei';
+  background-color: #000430;
 }
