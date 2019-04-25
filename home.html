@@ -58,13 +58,19 @@
 	<!-- 中间主体 -->
 	<section class="section flex-block">
 		<!-- 默认单位 -->
-		<div class="tab-list flex-block">
+		<!-- <div class="tab-list flex-block">
 			<div class="tab-li active data-collection" id="data-collection">数据汇聚</div>
 			<div class="tab-li data-serve" id="data-serve">数据服务</div>
-		</div>
-		<div class="-list flex-block">
-			<div class="tab-li active data-collection" id="data-collection">数据汇聚</div>
-			<div class="tab-li data-serve" id="data-serve">数据服务</div>
+		</div> -->
+		<div class="legend-list flex-block">
+			<div class="legend-li flex1">
+				<span class="no-update-icon"></span>
+				<span class="font">交换正常生产库数据未更新</span>
+			</div>
+			<div class="legend-li">
+				<span class="warn-icon"></span>
+				<span class="font">数据交换异常</span>
+			</div>
 		</div>
 		<!-- 默认单位 -->
 		<div class="unit-box">
@@ -121,23 +127,39 @@
 				</li>
 			</ul>
 		</div>
-
+		<!-- <div class="tooltip left-tooltip">
+			<div class="tooltip-top"></div>
+			<div class="tooltip-center">
+				<div class="tool-titie">
+					<span class="title-icon no-update"></span>
+					<span class="font">数据交换异常</span>
+				</div>
+				<p class="tool-info">异常时间：2019-04-09 14:00</p>
+				<p class="tool-info">未警告
+					<span class="sendMess">点击发送信息</span>
+				</p>
+				<a href="#">
+					<div class="tool-btn">查看告警记录</div>
+				</a>
+			</div>
+			<div class="tool-bottom"></div>
+		</div> -->
 		<!-- 左边线条组合 -->
 		<div class="line-list">
 			<!-- 绘制光点随着曲线移动  模块 start-->
-			<div class="quadratic-curve-box ">
+			<div class="quadratic-curve-box  quadratic-curve-box-left">
 				<canvas class="quadratic-curve" id="canvas" width=142 height=650></canvas>
 				<div class="lignt-box" id="lignt-box">
-					<span class="line-icon line-icon0"></span>
-					<span class="line-icon line-icon1"></span>
-					<span class="line-icon line-icon2"></span>
-					<span class="line-icon line-icon3"></span>
-					<span class="line-icon line-icon4"></span>
-					<span class="line-icon line-icon5"></span>
-					<span class="line-icon line-icon6"></span>
-					<span class="line-icon line-icon7"></span>
-					<span class="line-icon line-icon8"></span>
-					<span class="line-icon line-icon9"></span>
+					<!-- <span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span> -->
 				</div>
 
 			</div>
@@ -324,7 +346,25 @@
 				</div>
 			</div>
 		</div>
-
+		
+		<div class="tooltip right-tooltip show">
+			<div class="tooltip-top"></div>
+			<div class="tooltip-center">
+				<div class="tool-titie">
+					<span class="title-icon warn"></span>
+					<span class="font">数据交换异常</span>
+				</div>
+				<p class="tool-info">异常时间：2019-04-09 14:00</p>
+				<p class="tool-info">
+					<b>未警告</b>
+					<b class="sendMess">点击发送信息</b>
+				</p>
+				<a href="#">
+					<div class="tool-btn">查看告警记录</div>
+				</a>
+			</div>
+			<div class="tool-bottom"></div>
+		</div>
 		<!-- 右边线条组合 -->
 		<div class="line-list right-line-list">
 			<!-- 绘制光点随着曲线移动  模块 start-->
@@ -332,15 +372,15 @@
 
 				<canvas class="quadratic-curve" id="canvas2" width=142 height=650></canvas>
 				<div class="lignt-box" id="lignt-box-right">
-					<span class="line-icon line-icon0"></span>
-					<span class="line-icon line-icon1"></span>
-					<span class="line-icon line-icon2"></span>
-					<span class="line-icon line-icon3"></span>
-					<span class="line-icon line-icon4"></span>
-					<span class="line-icon line-icon5"></span>
-					<span class="line-icon line-icon6"></span>
-					<span class="line-icon line-icon7"></span>
-					<span class="line-icon line-icon8"></span>
+					<!-- <span class="line-icon"  data-type="气象数据"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span>
+					<span class="line-icon"></span> -->
 				</div>
 
 			</div>

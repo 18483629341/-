@@ -14,6 +14,7 @@
 /* 框架布局*/
 .section {
   padding: 0 50px;
+  position: relative;
 }
 .section .list-box {
   width: 235px;
@@ -28,6 +29,11 @@
 }
 .section .center-box {
   flex: 1;
+}
+.section .tooltip {
+  width: 270px;
+  height: 200px;
+  position: absolute;
 }
 .section .center-content {
   width: 1005px;
@@ -189,6 +195,38 @@
 .tab-list .data-serve.active {
   background: url(../images/home/right_tab_on.png);
 }
+.legend-list {
+  position: absolute;
+  width: 470px;
+  height: 22px;
+  top: 17px;
+  left: 60px;
+}
+.legend-list .legend-li {
+  height: 100%;
+}
+.legend-list .legend-li .font {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 22px;
+  color: #ffffff;
+}
+.legend-list .legend-li .no-update-icon,
+.legend-list .legend-li .warn-icon {
+  display: inline-block;
+  width: 48px;
+  height: 16px;
+  background: url(../images/home/red_line.png);
+  position: relative;
+  top: 3px;
+}
+.legend-list .legend-li .warn-icon {
+  background: url(../images/home/yellow_line.png);
+}
+.legend-list .legend-li + .legend-li {
+  width: 182px;
+  margin-left: 40px;
+}
 /*列表部分 start*/
 .list-header {
   margin-bottom: 22px;
@@ -272,7 +310,7 @@
   line-height: 65px;
   padding-left: 60px;
   width: 50%;
-  padding-right: 76px;
+  padding-right: 40px;
 }
 .header-con .num {
   display: inline-block;
@@ -280,7 +318,7 @@
   width: 49%;
   line-height: 72px;
   text-align: left;
-  padding-left: 76px;
+  padding-left: 40px;
   color: #00fff0;
 }
 /*列表部分 end*/
@@ -303,50 +341,16 @@
 }
 .line-icon {
   display: inline-block;
-  width: 30px ;
+  width: 30px;
   height: 14px;
   background: url(../images/home/gu_dot.png) no-repeat;
   position: absolute;
 }
-.line-icon0 {
-  left: 0;
-  top: 36px;
+.line-icon.warn {
+  background: url(../images/home/red_dot.png) no-repeat;
 }
-.line-icon1 {
-  left: 0;
-  top: 108px;
-}
-.line-icon2 {
-  left: 0;
-  top: 180px;
-}
-.line-icon3 {
-  left: 0;
-  top: 252px;
-}
-.line-icon4 {
-  left: 0;
-  top: 324px;
-}
-.line-icon5 {
-  left: 0;
-  top: 396px;
-}
-.line-icon6 {
-  left: 0;
-  top: 468px;
-}
-.line-icon7 {
-  left: 0;
-  top: 540px;
-}
-.line-icon8 {
-  left: 0;
-  top: 612px;
-}
-.line-icon9 {
-  left: 0;
-  top: 650px;
+.line-icon.no-update {
+  background: transparent;
 }
 .right-line-list {
   transform: rotateY(180deg);
@@ -602,10 +606,10 @@
 /* 旋转模块  end*/
 /* 中间底部 */
 .center-bottom {
-  border: 1px solid red;
   width: 1070px;
-  height: 220px;
-  margin: -55px auto 0;
+  height: 206px;
+  margin: -55px 0 0 -40px;
+  padding: 0 50px;
 }
 .city-data-list {
   height: 100%;
@@ -719,9 +723,93 @@
 .footer .point:last-child {
   text-align: right;
 }
+/*tooltip*/
+.tooltip {
+  width: 271px;
+  height: 200px;
+  top: 93px;
+  display: none;
+  position: absolute;
+}
+.tooltip .tooltip-top {
+  width: 100%;
+  height: 20px;
+  background: url(../images/home/box_top.png) no-repeat;
+}
+.tooltip .tool-bottom {
+  width: 100%;
+  height: 20px;
+  background: url(../images/home/box_bom.png) no-repeat;
+}
+.tooltip .tooltip-center {
+  width: 100%;
+  height: 160px;
+  padding: 0 24px;
+  background: url(../images/home/box_center.png) repeat-y;
+}
+.tooltip .tooltip-center .tool-titie {
+  height: 28px;
+  margin-bottom: 2px;
+}
+.tooltip .tooltip-center .title-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  top: 3px;
+  margin-right: 4px;
+}
+.tooltip .tooltip-center .title-icon.warn {
+  background: url(../images/home/red_icon.png) repeat-y;
+}
+.tooltip .tooltip-center .title-icon.no-update {
+  background: url(../images/home/yellow_icon.png) repeat-y;
+}
+.tooltip .tooltip-center .font {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #ffffff;
+}
+.tooltip .tooltip-center .tool-info {
+  font-size: 16px;
+  height: 37px;
+  line-height: 37px;
+  color: #ffffff;
+}
+.tooltip .tooltip-center .tool-btn {
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  height: 40px;
+  margin-top: 10px;
+  line-height: 40px;
+  color: #ffffff;
+  background: #1080ff;
+}
+.tooltip .tooltip-center .sendMess {
+  float: right;
+  cursor: pointer;
+}
+.tooltip.show {
+  display: block;
+}
+.left-tooltip {
+  left: 350px;
+}
+.right-tooltip {
+  left: 1300px;
+}
+.mCSB_scrollTools {
+  width: 4px;
+}
+.mCSB_scrollTools .mCSB_draggerRail {
+  width: 100%;
+  background: transparent;
+}
 .mCSB_scrollTools.mCSB_scrollTools_horizontal {
   width: 1070px;
-  height: 100%!important;
+  height: 100% !important;
   z-index: 8;
   margin-left: -50px;
 }
@@ -747,4 +835,15 @@
 }
 .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight:hover {
   background: url(../images/home/jt_right_on.png) no-repeat;
+}
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: transparent;
+  filter: "alpha(opacity=100)";
+  -ms-filter: "alpha(opacity=100)";
+  border-radius: 2px;
+}
+.mCSB_scrollTools .mCSB_dragger:hover .mCSB_dragger_bar {
+  background-color: transparent;
+  filter: "alpha(opacity=100)";
+  -ms-filter: "alpha(opacity=100)";
 }

@@ -32,21 +32,22 @@ window.requestAnimFrame = (function () {
 //利用canvas绘制曲线
 /**
  * 
- * @param {*} elementId 绘制曲线的canvas的ID
- * @param {*} n         需要绘制曲线的数量
+ * @param {string} elementId 绘制曲线的canvas的ID
+ * @param {string} elementClass 曲线组件/光点的最大容器
+ * @param {array} arr    相关数据状态的数组
  */
-function draw(elementId, n) {
+function draw(elementId, elementClass,arr) {
     var canvas = document.getElementById(elementId);
     //var boxHeight=canvas.style.height;
     //设置或得到整个canvas的高度
-
+    var n=arr.length;
     var boxHeight = $('#' + elementId).height(); //canvas的高度 待完善
     var boxWidth = $('#' + elementId).width(); //canvas的宽度 待完善
     var perHeight = parseInt(boxHeight / n);
     var centerY = parseInt(boxHeight / 2);
-
     var context = canvas.getContext('2d');
-
+   
+   
     //绘制2次贝塞尔曲线 
     context.setLineDash([6, 6]); //设置线条为虚线的样式
     for (var i = 0; i < n; i++) {
@@ -58,7 +59,17 @@ function draw(elementId, n) {
         //quadraticCurveTo(cpx,cpy,x,y)　　//cpx，cpy表示控制点的坐标,x，y表示终点坐标；
         //曲线绘制的控制点位整个canvas
         context.quadraticCurveTo(30, controlY, boxWidth, centerY);
-        context.strokeStyle = "#078dff"; //设置贝塞尔曲线的颜色
+        $(elementClass+' .lignt-box').append('<span class="line-icon"  data-type="'+arr[i].type+'"></span>');
+        if(arr[i].status==='warn'){
+            context.strokeStyle = "#e75a19"; //数据异常时： 设置贝塞尔曲线的颜色
+            $(elementClass+' .line-icon').eq(i).addClass('warn');
+        }else if(arr[i].status==='no-update'){
+            context.strokeStyle = "#e8c219"; //数据未更新时： 设置贝塞尔曲线的颜色
+            $(elementClass+' .line-icon').eq(i).addClass('no-update');
+        }else{
+            context.strokeStyle = "#5a9ce8"; //数据正常时： 设置贝塞尔曲线的颜色  
+        }
+        
         context.stroke();
     }
 }
@@ -168,7 +179,7 @@ function CenterValueLoop() {
 
 /**
  * 各市区信息显示模块（容器为.center-bottom）：鼠标滚动时水平移动/自动滚动/点击左箭头，左滚动/点击右箭头右滚动
- * @param {Integer} n 点击按钮/鼠标滚动
+ * @param {Integer} n 点击按钮/鼠标滚动的个数
  */
 function selfCustomScroll(n) {
     /* 仿滚动条 */
@@ -177,21 +188,65 @@ function selfCustomScroll(n) {
     var translateNum = n; //设置
     $(".center-bottom").mCustomScrollbar({
         axis: "x", //"x","y",值为字符串，分别对应横纵向滚动
-        //scrollInertia:0,
         mouseWheel: {
-            //enable:true,
-            //scrollAmount:$('.city-data-li').width()*1+50*(1-1),
-            // preventDefault:true,
-            // invert:true
+          
         },
         scrollButtons: {
             enable: true,
-            // scrollType:"continuous",
             scrollSpeed: 20,
             scrollAmount: $('.city-data-li').width() * translateNum + 50 * (translateNum - 1)
         },
-        //scrollbarPosition: "outside" ,  
-        //advanced:{ updateOnContentResize:true } ,
+        
     });
+
+   
 }
 
+/**   
+ * 功能 鼠标进入时，停止滚动/鼠标离开时，自动滚动
+ * @param {string}  element 作用对象dom
+ * @param {Integer} n 自动滚动个数
+ */
+function autoScrollFun(element,n) {
+	var $this = $(element);
+	var scrollTimer=null;
+	$this.hover(function () {
+		clearInterval(scrollTimer);
+	}, function () {
+		scrollTimer = setInterval(function () {
+			scrollNews($this,n);
+		}, 2000);
+	}).trigger('mouseleave');	
+}
+
+/**  
+ * 功能 使某个容器自动滚动 
+ * @param {Object} obj  需要滚动的容器
+ * @param {int} n  每次滚动的个数
+ */
+function scrollNews(obj,n) {
+	if (obj.find('ol').length) {
+        var $self = obj.find('ol');
+        var scrollWidth=0;
+        for(var i=0;i<n;i++){
+            var liWidth = $self.find('li').eq(i).width();
+            console.log(liWidth)
+            scrollWidth+=liWidth;
+        }
+        scrollWidth+=50*(n-1);
+		//获得第n个tr的高度
+       
+		//并根据此高度向上移动
+		$self.animate({
+			'marginLeft': -scrollWidth + 'px'
+		}, 600, function () {
+			$self.css({
+				marginLeft: 0
+				//恢复marginTop,将第一个tr元素，排列放置到末尾，达到循环播放的目的
+            });
+            for(var i=0;i<n;i++){
+               $self.find('li:first').appendTo($self);
+            }
+		})
+	}
+}

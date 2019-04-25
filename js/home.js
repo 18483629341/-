@@ -1,7 +1,10 @@
 $(function () {
     //各市区信息显示模块：鼠标滚动时水平移动/自动滚动/点击左箭头，左滚动/点击右箭头右滚动
-    selfCustomScroll(3);
-    
+    selfCustomScroll(2); 
+    //自动水平滚动  
+    autoScrollFun(".center-bottom",1);
+    //tooltip的弹窗控制
+    toggleTooltip();
    
     /* 外环的旋转*/
     var rollPanel1 = new RollPanel('#out-rotate-item-main');/*参数一：需要旋转的元素选择器 */
@@ -9,19 +12,20 @@ $(function () {
     var rollPanel2 = new RollPanel('#in-rotate-item-main');/*参数一：需要旋转的元素选择器 */
 
     /* 左边曲线  */
-    draw('canvas', 10);//draw(elementId,需要展示的曲线条数)
+    var leftData=[{type:'气象数据',status:'normal'},{type:'水文水利',status:'normal'},{type:'土地利用',status:'warn'},{type:'遥感数据',status:'normal'},{type:'工商数据',status:'normal'},{type:'税务数据',status:'normal'},{type:'规划',status:'normal'},{type:'能源',status:'normal'},{type:'农业',status:'normal'},{type:'农业',status:'normal'}];
+    draw('canvas','.quadratic-curve-box-left', leftData);//draw(elementId,曲线组件/光点的最大容器,需要展示的曲线条数,数据状态数组)
     /* 左边曲线上所有的光点的方法对象  */
     var lightLoopLeft = new LightLoop('#lignt-box', 10, "converage");//converage 往集中方向
 
     /* 右边曲线  */
-    draw('canvas2', 9);
+    var rightData=[{type:'气象数据',status:'warn'},{type:'水文水利',status:'normal'},{type:'土地利用',status:'no-update'},{type:'遥感数据',status:'normal'},{type:'工商数据',status:'normal'},{type:'税务数据',status:'normal'},{type:'规划',status:'normal'},{type:'能源',status:'normal'},{type:'农业',status:'normal'}];
+    draw('canvas2', '.quadratic-curve-box-right',rightData);
     /* 右边曲线上所有的光点的方法对象  */
     var lightLoopRight = new LightLoop('#lignt-box-right', 9, 'converage');
    
     //数据汇聚和数据服务的循环切换 使用setTimeout()模拟setInterval()，才能准确在间隔时间内执行方法
     var i = 0;
     var timer = setTimeout(function () {
-        //console.log(status);
         leftRightAlter();
         timer = setTimeout(arguments.callee, loopTime);
     }, loopTime)
@@ -41,25 +45,19 @@ $(function () {
         //数据汇聚和数据服务的方法
         if (parseInt(i % 2) === parseInt(0)) {
             //此处展示数据汇聚的内容
-            spreadTranslate()//整体向外扩散 
-           
+            spreadTranslate() //整体样式向外扩散 
         } else if (parseInt(i % 2) === parseInt(1)) {
             //此处展示数据服务的内容
-            collectTranslate(); 
+            collectTranslate(); //整体样式向外集中
         }
-        //console.log(status);
         i++;
     }
-   
-   
-    
 
-    //循环播放数据
+    //循环播放中间球体数据
     CenterValueLoop();//虚拟展示              
 
     //整体向中心集中
     function collectTranslate() {
-        //console.log(1);
         if (status != 'service') {
             status = 'service';
             //$('span').remove('.arrow-icon');
@@ -71,8 +69,8 @@ $(function () {
             $(".up-icon").addClass('up-side-down');
             lightLoopLeft.setType("spread");//converage 往扩散方向
             lightLoopRight.setType('spread'); 
-            
            
+
         }
        
     }
@@ -83,14 +81,12 @@ $(function () {
             status = 'converage'; 
             clearInterval(leftRightTimer);
             leftRightTimer=setInterval(function(){
-                
                 arrowTran('converage');
             },leftRightGapTime);  
             $(".down-icon").removeClass('up-side-down');
             $(".up-icon").removeClass('up-side-down');
             lightLoopLeft.setType("converage");//converage 往集中方向
-            lightLoopRight.setType('converage');
-                
+            lightLoopRight.setType('converage'); 
         }
     }
     
@@ -116,6 +112,26 @@ $("body").on('click', '.data-serve', function () {
     $(".down-icon").addClass('up-side-down');
     $(".up-icon").addClass('up-side-down');
 })
+
+
+
+
+//toggleTooltip
+function toggleTooltip(){
+    $(document).mouseup(function (e) {
+		var _con = $('.tooltip '); // 设置目标区域 
+		if (!_con.is(e.target) && _con.has(e.target).length === 0) {
+			// Mark 1 some code... // 功能代码
+			$('.tooltip').removeClass('show');
+		}
+    });
+    
+    //点击光点icon
+    $("body").on('click', '.line-icon.warn', function () {
+        var type=  $(this).attr('data-type');
+        $('.tooltip').addClass('show');
+    })
+}
 
 /**
  * 水平移动的基本方法  
