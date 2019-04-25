@@ -656,22 +656,23 @@
 /* 中间底部 */
 .center-bottom{
 	border: 1px solid red;
-	width: 970px;
+	width:1070px;
 	height: 220px;
 	margin: -55px auto 0;
+	
 	//background: #333;
 }
- .level-data-list{
+ .city-data-list{
 	 height: 100%;
 	//  height: 210px;
  }
-.level-data-li{
+.city-data-li{
 	width:137px;
     height: 170px;
     display: inline-block;
     position: relative;
 }
-.level-data-li+.level-data-li{
+.city-data-li+.city-data-li{
 	margin-left: 50px;
 }
 .up-icon{
@@ -729,10 +730,11 @@
 	}
 	.progress{
 		width:100%;
-		height:4px;
+		height:9px;
 		margin-top: 23px;
 		background: #1c3761;
 		position: relative;
+		overflow: hidden;
 		.rotate-radio{
 			width:0%;
 			height:100%;
@@ -747,6 +749,31 @@
 			margin-left: -10px;
 			margin-top: -19px;
 		}
+		.arrow-box{
+			width:100%;
+			height:100%;
+			// background: url(../images/home/jt_lan.png) repeat-x;
+			position: relative;
+		}
+		.arrow-box::after{
+			position: absolute;
+			content: '';
+			width:100%;
+			height:100%;
+			background: url(../images/home/mask.png);
+			z-index: 2;
+		}
+		.arrow-icon{
+			display: inline-block;
+			width:21px;
+			height:100%;
+			background: url(../images/home/jt_lan.png);
+			position: relative;
+			top:-8px;
+		}
+		.arrow-icon+.arrow-icon{
+			margin-left:-2px;
+		}
 	}
 	.point:first-child{
         text-align: left;
@@ -756,3 +783,35 @@
 	}
 }
 
+//仿滚动条对应的修改
+.mCSB_scrollTools.mCSB_scrollTools_horizontal {
+	width: 1070px;
+    height: 100%!important; 
+	z-index: 8;
+	margin-left: -50px;
+	//position: relative;
+}
+.mCSB_scrollTools .mCSB_draggerContainer{ 
+	position: absolute;
+}
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft, .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight{
+	position: absolute;
+	width:43px;
+	height:109px;
+	border: 1px solid blue;
+	top:50px;
+}
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft{
+	background: url(../images/home/jt_left_off.png) no-repeat;
+	//left:-80px; 
+}
+ .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight{
+	background: url(../images/home/jt_right_off.png) no-repeat;
+	//right:-80px; 
+}
+.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft:hover{
+	background: url(../images/home/jt_left_on.png) no-repeat;
+}
+ .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight:hover{
+	background: url(../images/home/jt_right_on.png) no-repeat;
+}
