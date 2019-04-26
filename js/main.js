@@ -185,16 +185,15 @@ function selfCustomScroll(n) {
     /* 仿滚动条 */
     var cityLength = $('.city-data-li').length;
     $('.city-data-list').css('width', $('.city-data-li').width() * cityLength + 50 * (cityLength - 1) + 100 + 'px');
-    var translateNum = n; //设置
     $(".center-bottom").mCustomScrollbar({
         axis: "x", //"x","y",值为字符串，分别对应横纵向滚动
-        mouseWheel: {
+        // mouseWheel: {
           
-        },
+        // },
         scrollButtons: {
             enable: true,
             scrollSpeed: 20,
-            scrollAmount: $('.city-data-li').width() * translateNum + 50 * (translateNum - 1)
+            scrollAmount: $('.city-data-li').width() * n + 50 *n
         },
         
     });
@@ -226,6 +225,7 @@ function autoScrollFun(element,n) {
  */
 
 function scrollNews(obj,n) {
+    $('.mCSB_container').css('left',0);
 	if (obj.find('ol').length) {
         var $self = obj.find('ol');
         var tranLeft=0;
