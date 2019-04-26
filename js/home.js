@@ -1,8 +1,8 @@
 $(function () {
     //各市区信息显示模块：鼠标滚动时水平移动/自动滚动/点击左箭头，左滚动/点击右箭头右滚动
-    selfCustomScroll(2); 
+    selfCustomScroll(5); 
     //自动水平滚动  
-    autoScrollFun(".center-bottom",1);
+    autoScrollFun(".center-bottom",2);
     //tooltip的弹窗控制
     toggleTooltip();
    
@@ -15,13 +15,13 @@ $(function () {
     var leftData=[{type:'气象数据',status:'normal'},{type:'水文水利',status:'normal'},{type:'土地利用',status:'warn'},{type:'遥感数据',status:'normal'},{type:'工商数据',status:'normal'},{type:'税务数据',status:'normal'},{type:'规划',status:'normal'},{type:'能源',status:'normal'},{type:'农业',status:'normal'},{type:'农业',status:'normal'}];
     draw('canvas','.quadratic-curve-box-left', leftData);//draw(elementId,曲线组件/光点的最大容器,需要展示的曲线条数,数据状态数组)
     /* 左边曲线上所有的光点的方法对象  */
-    var lightLoopLeft = new LightLoop('#lignt-box', 10, "converage");//converage 往集中方向
+    var lightLoopLeft = new LightLoop('#lignt-box', leftData.length, "converage");//converage 往集中方向
 
     /* 右边曲线  */
     var rightData=[{type:'气象数据',status:'warn'},{type:'水文水利',status:'normal'},{type:'土地利用',status:'no-update'},{type:'遥感数据',status:'normal'},{type:'工商数据',status:'normal'},{type:'税务数据',status:'normal'},{type:'规划',status:'normal'},{type:'能源',status:'normal'},{type:'农业',status:'normal'}];
     draw('canvas2', '.quadratic-curve-box-right',rightData);
     /* 右边曲线上所有的光点的方法对象  */
-    var lightLoopRight = new LightLoop('#lignt-box-right', 9, 'converage');
+    var lightLoopRight = new LightLoop('#lignt-box-right', rightData.length, 'converage');
    
     //数据汇聚和数据服务的循环切换 使用setTimeout()模拟setInterval()，才能准确在间隔时间内执行方法
     var i = 0;
@@ -35,7 +35,7 @@ $(function () {
     var loopTime = 30000;//30000
     var animateTime = 29500;//29500
     var leftRightTimer=null;
-    var leftRightGapTime=loopTime/1582*19;
+    var leftRightGapTime=loopTime/1584*17;
     leftRightTimer=setInterval(function(){
         arrowTran('converage');
     },leftRightGapTime); 
@@ -60,17 +60,19 @@ $(function () {
     function collectTranslate() {
         if (status != 'service') {
             status = 'service';
-            //$('span').remove('.arrow-icon');
+           
             clearInterval(leftRightTimer);
+            //删除所有的箭头
+            $('span').remove('.arrow-icon');
+            $('.arrow-box').addClass('rotate');
             leftRightTimer=setInterval(function(){
-                arrowTran('service');
+                //arrowTran('service');
+                arrowTran();
             },leftRightGapTime);
             $(".down-icon").addClass('up-side-down');
             $(".up-icon").addClass('up-side-down');
             lightLoopLeft.setType("spread");//converage 往扩散方向
             lightLoopRight.setType('spread'); 
-           
-
         }
        
     }
@@ -80,8 +82,12 @@ $(function () {
         if (status != 'converage') {
             status = 'converage'; 
             clearInterval(leftRightTimer);
+            $('span').remove('.arrow-icon');
+            //box对称旋转180度
+            $('.arrow-box').removeClass('rotate');
             leftRightTimer=setInterval(function(){
-                arrowTran('converage');
+                //arrowTran('converage');
+                arrowTran();
             },leftRightGapTime);  
             $(".down-icon").removeClass('up-side-down');
             $(".up-icon").removeClass('up-side-down');
@@ -100,7 +106,7 @@ $(function () {
     lightLoopLeft.setType('converage');
     lightLoopRight.setType('converage');
     $(".down-icon").removeClass('up-side-down');
-        $(".up-icon").removeClass('up-side-down');
+    $(".up-icon").removeClass('up-side-down');
 })
 
 //点击按钮-- 数据服务
@@ -127,8 +133,18 @@ function toggleTooltip(){
     });
     
     //点击光点icon
-    $("body").on('click', '.line-icon.warn', function () {
+    $("body").on('click', '.lignt-box-left .line-icon.warn', function () {
         var type=  $(this).attr('data-type');
+        $('.tooltip').removeClass('right-tooltip');
+        $('.tooltip').addClass('left-tooltip');
+        $('.tooltip').addClass('show');
+    })
+
+     //点击光点icon
+     $("body").on('click', '.lignt-box-right .line-icon.warn', function () {
+        var type=  $(this).attr('data-type');
+        $('.tooltip').removeClass('left-tooltip');
+        $('.tooltip').addClass('right-tooltip');
         $('.tooltip').addClass('show');
     })
 }
@@ -138,10 +154,10 @@ function toggleTooltip(){
  * @param {string} type  converage 或service
  */
 function arrowTran(type) {
-   
-    if(type==='converage'){
-        $('.arrow-box').append('<span class="arrow-icon"></span>');
-    }else{
-        $('.arrow-icon').eq(-1).remove();
-    } 
+    // if(type==='converage'){
+    //     $('.arrow-box').append('<span class="arrow-icon"></span>');
+    // }else{
+    //     $('.arrow-icon').eq(-1).remove();
+    // } 
+    $('.arrow-box').append('<span class="arrow-icon"></span>');
 }

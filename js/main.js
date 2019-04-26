@@ -224,22 +224,24 @@ function autoScrollFun(element,n) {
  * @param {Object} obj  需要滚动的容器
  * @param {int} n  每次滚动的个数
  */
+
 function scrollNews(obj,n) {
 	if (obj.find('ol').length) {
         var $self = obj.find('ol');
-        var scrollWidth=0;
+        var tranLeft=0;
         for(var i=0;i<n;i++){
-            var liWidth = $self.find('li').eq(i).width();
-            console.log(liWidth)
-            scrollWidth+=liWidth;
+            var liWidth = $self.find('li').eq(i).width()+50;
+            console.log(liWidth);
+          
+            tranLeft+=liWidth;
         }
-        scrollWidth+=50*(n-1);
 		//获得第n个tr的高度
        
 		//并根据此高度向上移动
 		$self.animate({
-			'marginLeft': -scrollWidth + 'px'
+			'marginLeft': -tranLeft + 'px'
 		}, 600, function () {
+            
 			$self.css({
 				marginLeft: 0
 				//恢复marginTop,将第一个tr元素，排列放置到末尾，达到循环播放的目的

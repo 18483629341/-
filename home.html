@@ -64,11 +64,11 @@
 		</div> -->
 		<div class="legend-list flex-block">
 			<div class="legend-li flex1">
-				<span class="no-update-icon"></span>
+				<span class="warn-icon"></span>
 				<span class="font">交换正常生产库数据未更新</span>
 			</div>
 			<div class="legend-li">
-				<span class="warn-icon"></span>
+				<span class="no-update-icon"></span>
 				<span class="font">数据交换异常</span>
 			</div>
 		</div>
@@ -82,7 +82,14 @@
 
 		<!-- 左列表 -->
 		<div class="list-box left-box">
-			<p class="list-header">业务数据</p>
+			<div class="list-header flex-block">
+				<div class="flex1">业务数据</div> 
+				<a href="#">
+					<div class="more-box ">
+					 更多<span class="more"></span>
+					</div>
+				</a>
+			</div>
 			<ul class="list-box">
 				<li class="list-li">
 					<span class="item">空气质量监测</span>
@@ -145,11 +152,11 @@
 			<div class="tool-bottom"></div>
 		</div> -->
 		<!-- 左边线条组合 -->
-		<div class="line-list">
+		<div class="line-list ">
 			<!-- 绘制光点随着曲线移动  模块 start-->
 			<div class="quadratic-curve-box  quadratic-curve-box-left">
 				<canvas class="quadratic-curve" id="canvas" width=142 height=650></canvas>
-				<div class="lignt-box" id="lignt-box">
+				<div class="lignt-box lignt-box-left" id="lignt-box">
 					<!-- <span class="line-icon"></span>
 					<span class="line-icon"></span>
 					<span class="line-icon"></span>
@@ -371,7 +378,7 @@
 			<div class="quadratic-curve-box quadratic-curve-box-right">
 
 				<canvas class="quadratic-curve" id="canvas2" width=142 height=650></canvas>
-				<div class="lignt-box" id="lignt-box-right">
+				<div class="lignt-box lignt-box-right" id="lignt-box-right">
 					<!-- <span class="line-icon"  data-type="气象数据"></span>
 					<span class="line-icon"></span>
 					<span class="line-icon"></span>

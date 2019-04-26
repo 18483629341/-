@@ -1,7 +1,7 @@
 .body1 {
   width: 1920px;
   overflow-y: scroll;
-  background-color: #00052f;
+  background-color: #061a2d;
   background-image: url(../images/home/all_bg.png);
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -46,7 +46,7 @@
 .section .center-main {
   height: 440px;
   transform: scale(0.9);
-  transform-origin: 50% 33%;
+  transform-origin: 50% 28%;
 }
 .footer {
   width: 100%;
@@ -237,6 +237,25 @@
   color: #fff;
   font-size: 20px;
   font-weight: 700;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.list-header .more-box {
+  width: 80px;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 14px;
+  line-height: 49px;
+  color: #fff;
+}
+.list-header .more {
+  margin-left: 4px;
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background: url('../images/home/more_icon.png');
+  position: relative;
+  top: 2px;
 }
 .list-li {
   font-weight: 700;
@@ -608,7 +627,7 @@
 .center-bottom {
   width: 1070px;
   height: 206px;
-  margin: -55px 0 0 -40px;
+  margin: -65px 0 0 -40px;
   padding: 0 50px;
 }
 .city-data-list {
@@ -662,6 +681,9 @@
 }
 /* 中间底部 end*/
 /* footer */
+.footer {
+  margin-top: -10px;
+}
 .footer .point {
   min-width: 110px;
   padding: 0 10px;
@@ -698,6 +720,10 @@
   height: 100%;
   position: relative;
 }
+.footer .progress .arrow-box.rotate {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
 .footer .progress .arrow-box::after {
   position: absolute;
   content: '';
@@ -715,7 +741,7 @@
   top: -8px;
 }
 .footer .progress .arrow-icon + .arrow-icon {
-  margin-left: -2px;
+  margin-left: -4px;
 }
 .footer .point:first-child {
   text-align: left;
@@ -821,7 +847,6 @@
   position: absolute;
   width: 43px;
   height: 109px;
-  border: 1px solid blue;
   top: 50px;
 }
 .mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft {
