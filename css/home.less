@@ -409,11 +409,14 @@
 }
 
 .line-icon.warn {
-    background: url(../images/home/red_dot.png) no-repeat;
+    width: 50px;
+    height: 50px;
+    background: url(../images/home/red.gif) no-repeat;
+    z-index: 5;
 }
 
 .line-icon.no-update {
-    background: transparent;
+    background:url(../images/home/yellow_dot.png) no-repeat;
 }
 
 .right-line-list {
@@ -708,12 +711,38 @@
 /* 旋转模块  end*/
 
 /* 中间底部 */
-
-.center-bottom {
-    width: 970px;
+.bottom-box{
+    width:1070px;
     height: 206px;
-    margin: -65px 0 0 0;
-    //padding: 0 50px;
+    margin: -65px 0 0 -40px;
+    flex-direction: row;
+    -webkit-flex-direction: row;
+    overflow: hidden;
+    .prevButton, .nextButton {
+        flex: 1;
+        width: 43px;
+        height: 109px;
+        position: relative;
+        border: none;
+        top: 50px;   
+    }
+    .prevButton {
+        background: url(../images/home/jt_left_off.png) no-repeat; //left:-80px; 
+    }
+    .nextButton {
+        background: url(../images/home/jt_right_off.png) no-repeat; 
+    }
+    .prevButton:hover {
+        background: url(../images/home/jt_left_on.png) no-repeat;
+    }
+    .nextButton:hover {
+        background: url(../images/home/jt_right_on.png) no-repeat;
+    }
+}
+.center-bottom {
+    width:970px;
+    height: 100%;
+    overflow: hidden;
 }
 
 .city-data-list {
@@ -790,7 +819,7 @@
         width: 100%;
         height: 9px;
         margin-top: 23px;
-        background: #1c3761;
+        
         position: relative;
         overflow: hidden;
         .rotate-radio {
@@ -809,27 +838,28 @@
         }
         .arrow-box {
             width: 100%;
-            height: 100%; // background: url(../images/home/jt_lan.png) repeat-x;
+            height: 100%; 
             position: relative;
+            background: url(../images/home/dc_line.png);
+            background-size: 100% 100%;
         }
         .arrow-mask{
             position: absolute;
             top: 0;
+            left:-1580px;
             width: 100%;
             height: 100%; 
             background: url(../images/home/mask.png);
+            background-size: 100% 100%;
         }
         .arrow-box.rotate {
             transform: rotateY(180deg);
             -webkit-transform: rotateY(180deg);
         }
-        .arrow-box::after {
-            position: absolute;
-            content: '';
-            width: 100%;
-            height: 100%;
-            background: url(../images/home/mask.png);
-            z-index: 2;
+        .arrow-mask.rotate {
+            left:1580px;
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
         }
         .arrow-icon {
             display: inline-block;
@@ -943,15 +973,18 @@
 }
 
 .mCSB_scrollTools.mCSB_scrollTools_horizontal {
-    width: 1070px;
+    width: 970px;
     height: 100% !important;
     z-index: 8;
-    margin-left: -50px;
+    //margin-left: -50px;
 }
 
-
+.mCSB_horizontal.mCSB_inside > .mCSB_container {
+    //padding: 0 25px;
+}
 .mCSB_scrollTools {
     .mCSB_draggerContainer {
+        //margin: 0 50px;
         position: absolute;
     }
     .mCSB_dragger:hover, .mCSB_dragger:active,.mCSB_dragger.mCSB_dragger_onDrag,
@@ -967,23 +1000,25 @@
 }
 
 .mCSB_scrollTools.mCSB_scrollTools_horizontal{
-
-    .mCSB_buttonLeft, .mCSB_buttonRight {
-        position: absolute;
-        width: 43px;
-        height: 109px; // border: 1px solid blue;
-        top: 50px;
-    }
-    .mCSB_buttonLeft {
-        background: url(../images/home/jt_left_off.png) no-repeat; //left:-80px; 
-    }
-    .mCSB_buttonRight {
-        background: url(../images/home/jt_right_off.png) no-repeat; //right:-80px; 
-    }
-    .mCSB_buttonLeft:hover {
-        background: url(../images/home/jt_left_on.png) no-repeat;
-    }
-    .mCSB_buttonRight:hover {
-        background: url(../images/home/jt_right_on.png) no-repeat;
-    }
+    border:1px solid green;
+    // .mCSB_buttonLeft, .mCSB_buttonRight {
+    //     position: absolute;
+    //     width: 43px;
+    //     height: 109px; // border: 1px solid blue;
+    //     top: 50px;
+        
+    // }
+    // .mCSB_buttonLeft {
+    //     background: url(../images/home/jt_left_off.png) no-repeat; //left:-80px; 
+    // }
+    // .mCSB_buttonRight {
+    //     background: url(../images/home/jt_right_off.png) no-repeat; 
+    //     right:90px; 
+    // }
+    // .mCSB_buttonLeft:hover {
+    //     background: url(../images/home/jt_left_on.png) no-repeat;
+    // }
+    // .mCSB_buttonRight:hover {
+    //     background: url(../images/home/jt_right_on.png) no-repeat;
+    // }
 }

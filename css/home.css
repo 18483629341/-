@@ -366,10 +366,13 @@
   position: absolute;
 }
 .line-icon.warn {
-  background: url(../images/home/red_dot.png) no-repeat;
+  width: 50px;
+  height: 50px;
+  background: url(../images/home/red.gif) no-repeat;
+  z-index: 5;
 }
 .line-icon.no-update {
-  background: transparent;
+  background: url(../images/home/yellow_dot.png) no-repeat;
 }
 .right-line-list {
   transform: rotateY(180deg);
@@ -624,10 +627,39 @@
 }
 /* 旋转模块  end*/
 /* 中间底部 */
+.bottom-box {
+  width: 1070px;
+  height: 206px;
+  margin: -65px 0 0 -40px;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  overflow: hidden;
+}
+.bottom-box .prevButton,
+.bottom-box .nextButton {
+  flex: 1;
+  width: 43px;
+  height: 109px;
+  position: relative;
+  border: none;
+  top: 50px;
+}
+.bottom-box .prevButton {
+  background: url(../images/home/jt_left_off.png) no-repeat;
+}
+.bottom-box .nextButton {
+  background: url(../images/home/jt_right_off.png) no-repeat;
+}
+.bottom-box .prevButton:hover {
+  background: url(../images/home/jt_left_on.png) no-repeat;
+}
+.bottom-box .nextButton:hover {
+  background: url(../images/home/jt_right_on.png) no-repeat;
+}
 .center-bottom {
   width: 970px;
-  height: 206px;
-  margin: -65px 0 0 0;
+  height: 100%;
+  overflow: hidden;
 }
 .city-data-list {
   height: 100%;
@@ -696,7 +728,6 @@
   width: 100%;
   height: 9px;
   margin-top: 23px;
-  background: #1c3761;
   position: relative;
   overflow: hidden;
 }
@@ -718,25 +749,26 @@
   width: 100%;
   height: 100%;
   position: relative;
+  background: url(../images/home/dc_line.png);
+  background-size: 100% 100%;
 }
 .footer .progress .arrow-mask {
   position: absolute;
   top: 0;
+  left: -1580px;
   width: 100%;
   height: 100%;
   background: url(../images/home/mask.png);
+  background-size: 100% 100%;
 }
 .footer .progress .arrow-box.rotate {
   transform: rotateY(180deg);
   -webkit-transform: rotateY(180deg);
 }
-.footer .progress .arrow-box::after {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 100%;
-  background: url(../images/home/mask.png);
-  z-index: 2;
+.footer .progress .arrow-mask.rotate {
+  left: 1580px;
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
 }
 .footer .progress .arrow-icon {
   display: inline-block;
@@ -840,10 +872,9 @@
   background: transparent;
 }
 .mCSB_scrollTools.mCSB_scrollTools_horizontal {
-  width: 1070px;
+  width: 970px;
   height: 100% !important;
   z-index: 8;
-  margin-left: -50px;
 }
 .mCSB_scrollTools .mCSB_draggerContainer {
   position: absolute;
@@ -861,22 +892,6 @@
   -ms-filter: "alpha(opacity=100)";
   border-radius: 2px;
 }
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft,
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight {
-  position: absolute;
-  width: 43px;
-  height: 109px;
-  top: 50px;
-}
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft {
-  background: url(../images/home/jt_left_off.png) no-repeat;
-}
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight {
-  background: url(../images/home/jt_right_off.png) no-repeat;
-}
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonLeft:hover {
-  background: url(../images/home/jt_left_on.png) no-repeat;
-}
-.mCSB_scrollTools.mCSB_scrollTools_horizontal .mCSB_buttonRight:hover {
-  background: url(../images/home/jt_right_on.png) no-repeat;
+.mCSB_scrollTools.mCSB_scrollTools_horizontal {
+  border: 1px solid green;
 }

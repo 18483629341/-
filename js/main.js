@@ -49,7 +49,7 @@ function draw(elementId, elementClass,arr) {
    
    
     //绘制2次贝塞尔曲线 
-    context.setLineDash([6, 6]); //设置线条为虚线的样式
+    context.setLineDash([3, 3]); //设置线条为虚线的样式
     for (var i = 0; i < n; i++) {
         var startY = perHeight / 2 + perHeight * i;
         var controlY = parseInt(centerY + perHeight / 16 * (i - n / 2));
@@ -81,14 +81,18 @@ function draw(elementId, elementClass,arr) {
  * @param {*} n         总共移动点的数量
  * @param {*} direction     需要绘制曲线的方向,只能为 "converage"|'spread'
  */
-function LightLoop(element, n, type) {
-    this.element = element
+function LightLoop(element, arr, type) {
+    this.element = element;
+    this.n=arr.length;
     this.type = type;
     this.boxHeight = $(this.element).height(); //移动点的的高度  
     this.boxWidth = $(this.element).width(); //移动点的父元素的的宽度
-    this.perHeight = parseInt(this.boxHeight / n);
-    this.childWidth = $(this.element).children().width(); //移动点的子元素的宽度    
-    this.childHeight = $(this.element).children().height(); //移动点的子元素的高度
+    this.perHeight = parseInt(this.boxHeight / this.n);
+    this.childWidth = 34||$(this.element).children().width(); //移动点的子元素的宽度    
+    this.childHeight = 14||$(this.element).children().height(); //移动点的子元素的高度
+    this.warnChildWidth=50;
+    this.warnChildHeight=50;
+
     //控制点p1统一为
     this.controlX = 30; //离canvas做左侧的水平距离 统一为30；
     //终点p2统一为右边终点
@@ -107,10 +111,10 @@ function LightLoop(element, n, type) {
         } else {
             this.radio = this.radio + 0.005;
         }
-        for (var i = 0; i < n; i++) {
+        for (var i = 0; i < this.n; i++) {
             var obj = {};
             //控制点p1
-            obj.controlY = this.boxHeight / 2 + this.perHeight / 16 * (i - n / 2);
+            obj.controlY = this.boxHeight / 2 + this.perHeight / 16 * (i - this.n / 2);
             //如果是光点往集中方向移动的类型
             if (this.type === "converage") {
                 //起点p0                
@@ -136,13 +140,27 @@ function LightLoop(element, n, type) {
                 obj.angle = Math.atan(obj.k) / 0.017453293 + 180; //根据斜率得到旋转角度，+180另外图标自身要换反方向
             }
             //根据比值this.radio变化计算点的坐标值；p=(1-this.radio)*(1-this.radio)p0+2*this.radio*(1-this.radio)*p1+this.radio*this.radio*p2;
-            obj.nowX = (1 - this.radio) * (1 - this.radio) * obj.startX + 2 * this.radio * (1 - this.radio) * this.controlX + this.radio * this.radio * obj.endX;
-            obj.nowY = (1 - this.radio) * (1 - this.radio) * obj.startY + 2 * this.radio * (1 - this.radio) * obj.controlY + this.radio * this.radio * obj.endY;
-            $(this.element + ' .line-icon:eq(' + i + ')').css({
-                'left': obj.nowX - this.childWidth / 2,
-                'top': obj.nowY - this.childHeight / 2,
-                'transform': 'rotate(' + obj.angle + 'deg)'
-            });
+            if(arr[i].status==='warn'){
+                //固定中间
+                radio=0.5;
+                obj.nowX = (1 - radio) * (1 - radio) * obj.startX + 2 * radio * (1 - radio) * this.controlX + radio * radio * obj.endX;
+                obj.nowY = (1 - radio) * (1 - radio) * obj.startY + 2 * radio * (1 - radio) * obj.controlY + radio * radio * obj.endY; 
+                $(this.element + ' .line-icon:eq(' + i + ')').css({
+                    'left': obj.nowX - this.warnChildWidth / 2,
+                    'top': obj.nowY - this.warnChildHeight / 2,
+                    'transform': 'rotate(' + obj.angle + 'deg)'
+                });
+            }else{
+                obj.nowX = (1 - this.radio) * (1 - this.radio) * obj.startX + 2 * this.radio * (1 - this.radio) * this.controlX + this.radio * this.radio * obj.endX;
+                obj.nowY = (1 - this.radio) * (1 - this.radio) * obj.startY + 2 * this.radio * (1 - this.radio) * obj.controlY + this.radio * this.radio * obj.endY; 
+                $(this.element + ' .line-icon:eq(' + i + ')').css({
+                    'left': obj.nowX - this.childWidth / 2,
+                    'top': obj.nowY - this.childHeight / 2,
+                    'transform': 'rotate(' + obj.angle + 'deg)'
+                });
+            }
+            
+           
         }
     }
 
@@ -184,21 +202,15 @@ function CenterValueLoop() {
 function selfCustomScroll(n) {
     /* 仿滚动条 */
     var cityLength = $('.city-data-li').length;
-    $('.city-data-list').css('width', $('.city-data-li').width() * cityLength + 50 * (cityLength - 1) + 100 + 'px');
+   
     $(".center-bottom").mCustomScrollbar({
         axis: "x", //"x","y",值为字符串，分别对应横纵向滚动
-        // mouseWheel: {
-          
-        // },
-        scrollButtons: {
-            enable: true,
-            scrollSpeed: 20,
-            scrollAmount: $('.city-data-li').width() * n + 50 *n
-        },
-        
-    });
+        // scrollButtons: {
+        //     enable: false,
+        //     //scrollAmount: $('.city-data-li').width() * n + 50 *n
+        // }  
+    })
 
-   
 }
 
 /**   
@@ -207,15 +219,63 @@ function selfCustomScroll(n) {
  * @param {Integer} n 自动滚动个数
  */
 function autoScrollFun(element,n) {
+    var isAuto=true;//是否自动滚动
 	var $this = $(element);
 	var scrollTimer=null;
 	$this.hover(function () {
 		clearInterval(scrollTimer);
 	}, function () {
 		scrollTimer = setInterval(function () {
-			scrollNews($this,n);
+            if(isAuto){
+                scrollNews($this,n);
+            }
 		}, 2000);
-	}).trigger('mouseleave');	
+    }).trigger('mouseleave');	
+
+     //posLeft 允许滚动范围  $this.width-$('.city-data-list').width< posLeft<$('.city-data-list').width-$this.width
+     var $self =$this.find('ol');
+     var minLeft=$this.width()- $self.width();
+     var maxLeft=$self.width()-$this.width();
+     
+   //点击按钮-- 左箭头
+ $("body").on('click','.prevButton', function () {
+    console.log('.prevButton',$self.css('left'),minLeft,maxLeft);
+    clearInterval(scrollTimer);
+    var posLeft=removePx($self.css('left'));
+    tranLeft=posLeft-$self.find('li').width() * n + 50 *n;
+    if(tranLeft< minLeft  ){
+        $self.css('left',minLeft+'px');
+        $('.nextButton').attr('disabled');
+    }else{
+        $self.css('left',tranLeft+'px');
+        //$('.nextButton').attr('disabled');
+    }
+})
+//点击按钮-- 左箭头
+$("body").on('click', '.nextButton', function () {
+    console.log('.nextButton',$self.css('left'));
+    clearInterval(scrollTimer);
+    var posLeft=removePx($self.css('left'));
+    tranLeft=posLeft+$self.find('li').width() * n + 50 *n;
+    if(tranLeft> maxLeft  ){
+        $self.css('left',maxLeft+'px');
+        $('.prevButton').attr('disabled');
+    }else{
+        $self.css('left',tranLeft+'px');
+    }
+})
+}
+
+ 
+
+/**  
+ * 功能 去除字符串的‘px’,并转化为数字类型 
+ * @param {string} str  需要处理的字符串
+ */
+function removePx(str){
+    var i=str.indexOf('px');
+    var numStr=str.substring(0,i);
+    return parseInt(numStr);
 }
 
 /**  
@@ -228,22 +288,21 @@ function scrollNews(obj,n) {
     $('.mCSB_container').css('left',0);
 	if (obj.find('ol').length) {
         var $self = obj.find('ol');
-        var tranLeft=0;
+        //$self.css('left',0);
+        var tranLeft=removePx($self.css('left'));
         for(var i=0;i<n;i++){
             var liWidth = $self.find('li').eq(i).width()+50;
-            console.log(liWidth);
-          
             tranLeft+=liWidth;
         }
 		//获得第n个tr的高度
        
 		//并根据此高度向上移动
 		$self.animate({
-			'marginLeft': -tranLeft + 'px'
-		}, 600, function () {
+			'left': -tranLeft + 'px'
+		}, 1000, function () {
             
 			$self.css({
-				marginLeft: 0
+				left: 0
 				//恢复marginTop,将第一个tr元素，排列放置到末尾，达到循环播放的目的
             });
             for(var i=0;i<n;i++){
@@ -252,3 +311,4 @@ function scrollNews(obj,n) {
 		})
 	}
 }
+

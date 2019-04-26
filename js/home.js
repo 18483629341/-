@@ -1,7 +1,10 @@
 $(function () {
     //各市区信息显示模块：鼠标滚动时水平移动/自动滚动/点击左箭头，左滚动/点击右箭头右滚动
-    selfCustomScroll(5); 
+    //selfCustomScroll(5); 
+
     //自动水平滚动  
+    var cityLength=$('.city-data-li').length;
+    $('.city-data-list').css('width', $('.city-data-li').width() * cityLength + 50 * (cityLength - 1) + 100 + 'px');
     autoScrollFun(".center-bottom",2);
     //tooltip的弹窗控制
     toggleTooltip();
@@ -15,13 +18,13 @@ $(function () {
     var leftData=[{type:'气象数据',status:'normal'},{type:'水文水利',status:'normal'},{type:'土地利用',status:'warn'},{type:'遥感数据',status:'normal'},{type:'工商数据',status:'normal'},{type:'税务数据',status:'normal'},{type:'规划',status:'normal'},{type:'能源',status:'normal'},{type:'农业',status:'normal'},{type:'农业',status:'normal'}];
     draw('canvas','.quadratic-curve-box-left', leftData);//draw(elementId,曲线组件/光点的最大容器,需要展示的曲线条数,数据状态数组)
     /* 左边曲线上所有的光点的方法对象  */
-    var lightLoopLeft = new LightLoop('#lignt-box', leftData.length, "converage");//converage 往集中方向
+    var lightLoopLeft = new LightLoop('#lignt-box', leftData, "converage");//converage 往集中方向
 
     /* 右边曲线  */
     var rightData=[{type:'气象数据',status:'warn'},{type:'水文水利',status:'normal'},{type:'土地利用',status:'no-update'},{type:'遥感数据',status:'normal'},{type:'工商数据',status:'normal'},{type:'税务数据',status:'normal'},{type:'规划',status:'normal'},{type:'能源',status:'normal'},{type:'农业',status:'normal'}];
     draw('canvas2', '.quadratic-curve-box-right',rightData);
     /* 右边曲线上所有的光点的方法对象  */
-    var lightLoopRight = new LightLoop('#lignt-box-right', rightData.length, 'converage');
+    var lightLoopRight = new LightLoop('#lignt-box-right', rightData, 'converage');
    
     //数据汇聚和数据服务的循环切换 使用setTimeout()模拟setInterval()，才能准确在间隔时间内执行方法
     var i = 0;
@@ -33,7 +36,6 @@ $(function () {
     var status = 'converage';
     //统一循环控制集中和扩散的时间
     var loopTime = 30000;//30000
-    var animateTime = 29500;//29500
     var leftRightTimer=null;
     var leftRightGapTime=loopTime/1584*17;
     leftRightTimer=setInterval(function(){
@@ -65,6 +67,8 @@ $(function () {
             //删除所有的箭头
             $('span').remove('.arrow-icon');
             $('.arrow-box').addClass('rotate');
+            $('.arrow-mask').addClass('rotate');
+            tranLeft=1580;
             leftRightTimer=setInterval(function(){
                 //arrowTran('service');
                 arrowTran();
@@ -85,6 +89,8 @@ $(function () {
             $('span').remove('.arrow-icon');
             //box对称旋转180度
             $('.arrow-box').removeClass('rotate');
+            $('.arrow-mask').removeClass('rotate');
+            tranLeft=-1580;
             leftRightTimer=setInterval(function(){
                 //arrowTran('converage');
                 arrowTran();
@@ -153,11 +159,16 @@ function toggleTooltip(){
  * 水平移动的基本方法  
  * @param {string} type  converage 或service
  */
+var tranLeft=-1580;
 function arrowTran(type) {
-    // if(type==='converage'){
-    //     $('.arrow-box').append('<span class="arrow-icon"></span>');
-    // }else{
-    //     $('.arrow-icon').eq(-1).remove();
-    // } 
     $('.arrow-box').append('<span class="arrow-icon"></span>');
+    if(type==='converage'){
+        tranLeft+=17;
+        $('.arrow-mask').css('left',tranLeft+'px');
+    }else{
+        tranLeft-=17;
+        $('.arrow-mask').css('left',tranLeft-17+'px');
+    } 
+   
 }
+
