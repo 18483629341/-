@@ -3,8 +3,6 @@ $(function () {
     //selfCustomScroll(5); 
 
     //自动水平滚动  
-    var cityLength=$('.city-data-li').length;
-    $('.city-data-list').css('width', $('.city-data-li').width() * cityLength + 50 * (cityLength - 1) + 100 + 'px');
     autoScrollFun(".center-bottom",2);
     //tooltip的弹窗控制
     toggleTooltip();

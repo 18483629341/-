@@ -216,12 +216,12 @@
   display: inline-block;
   width: 48px;
   height: 16px;
-  background: url(../images/home/red_line.png);
+  background: url(../images/home/yellow_line.png);
   position: relative;
   top: 3px;
 }
 .legend-list .legend-li .warn-icon {
-  background: url(../images/home/yellow_line.png);
+  background: url(../images/home/red_line.png);
 }
 .legend-list .legend-li + .legend-li {
   width: 182px;
@@ -368,8 +368,41 @@
 .line-icon.warn {
   width: 50px;
   height: 50px;
-  background: url(../images/home/red.gif) no-repeat;
+  background: #fff;
   z-index: 5;
+  -webkit-animation: scaleLine 10s  infinite;
+  -moz-animation: scaleLine 10s infinite;
+  animation: scaleLine 10s  infinite;
+}
+@-webkit-keyframes scaleLine {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.2);
+    opacity: .2;
+  }
+}
+@-moz-keyframes scaleLine {
+  from {
+    -moz-transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    -moz-transform: scale(0.2);
+    opacity: .2;
+  }
+}
+@keyframes scaleLine {
+  from {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    -webkit-transform: scale(0.2);
+    opacity: .2;
+  }
 }
 .line-icon.no-update {
   background: url(../images/home/yellow_dot.png) no-repeat;
@@ -628,7 +661,7 @@
 /* 旋转模块  end*/
 /* 中间底部 */
 .bottom-box {
-  width: 1070px;
+  width: 1076px;
   height: 206px;
   margin: -65px 0 0 -40px;
   flex-direction: row;
@@ -638,11 +671,14 @@
 .bottom-box .prevButton,
 .bottom-box .nextButton {
   flex: 1;
-  width: 43px;
   height: 109px;
   position: relative;
-  border: none;
   top: 50px;
+  visibility: visible;
+}
+.bottom-box .prevButton.hidden,
+.bottom-box .nextButton.hidden {
+  visibility: hidden;
 }
 .bottom-box .prevButton {
   background: url(../images/home/jt_left_off.png) no-repeat;
@@ -657,11 +693,13 @@
   background: url(../images/home/jt_right_on.png) no-repeat;
 }
 .center-bottom {
-  width: 970px;
+  width: 990px;
   height: 100%;
   overflow: hidden;
 }
 .city-data-list {
+  position: relative;
+  left: 0;
   height: 100%;
 }
 .city-data-li {

@@ -36,18 +36,18 @@ window.requestAnimFrame = (function () {
  * @param {string} elementClass 曲线组件/光点的最大容器
  * @param {array} arr    相关数据状态的数组
  */
-function draw(elementId, elementClass,arr) {
+function draw(elementId, elementClass, arr) {
     var canvas = document.getElementById(elementId);
     //var boxHeight=canvas.style.height;
     //设置或得到整个canvas的高度
-    var n=arr.length;
+    var n = arr.length;
     var boxHeight = $('#' + elementId).height(); //canvas的高度 待完善
     var boxWidth = $('#' + elementId).width(); //canvas的宽度 待完善
     var perHeight = parseInt(boxHeight / n);
     var centerY = parseInt(boxHeight / 2);
     var context = canvas.getContext('2d');
-   
-   
+
+
     //绘制2次贝塞尔曲线 
     context.setLineDash([3, 3]); //设置线条为虚线的样式
     for (var i = 0; i < n; i++) {
@@ -59,17 +59,17 @@ function draw(elementId, elementClass,arr) {
         //quadraticCurveTo(cpx,cpy,x,y)　　//cpx，cpy表示控制点的坐标,x，y表示终点坐标；
         //曲线绘制的控制点位整个canvas
         context.quadraticCurveTo(30, controlY, boxWidth, centerY);
-        $(elementClass+' .lignt-box').append('<span class="line-icon"  data-type="'+arr[i].type+'"></span>');
-        if(arr[i].status==='warn'){
+        $(elementClass + ' .lignt-box').append('<span class="line-icon"  data-type="' + arr[i].type + '"></span>');
+        if (arr[i].status === 'warn') {
             context.strokeStyle = "#e75a19"; //数据异常时： 设置贝塞尔曲线的颜色
-            $(elementClass+' .line-icon').eq(i).addClass('warn');
-        }else if(arr[i].status==='no-update'){
+            $(elementClass + ' .line-icon').eq(i).addClass('warn');
+        } else if (arr[i].status === 'no-update') {
             context.strokeStyle = "#e8c219"; //数据未更新时： 设置贝塞尔曲线的颜色
-            $(elementClass+' .line-icon').eq(i).addClass('no-update');
-        }else{
+            $(elementClass + ' .line-icon').eq(i).addClass('no-update');
+        } else {
             context.strokeStyle = "#5a9ce8"; //数据正常时： 设置贝塞尔曲线的颜色  
         }
-        
+
         context.stroke();
     }
 }
@@ -83,15 +83,15 @@ function draw(elementId, elementClass,arr) {
  */
 function LightLoop(element, arr, type) {
     this.element = element;
-    this.n=arr.length;
+    this.n = arr.length;
     this.type = type;
     this.boxHeight = $(this.element).height(); //移动点的的高度  
     this.boxWidth = $(this.element).width(); //移动点的父元素的的宽度
     this.perHeight = parseInt(this.boxHeight / this.n);
-    this.childWidth = 34||$(this.element).children().width(); //移动点的子元素的宽度    
-    this.childHeight = 14||$(this.element).children().height(); //移动点的子元素的高度
-    this.warnChildWidth=50;
-    this.warnChildHeight=50;
+    this.childWidth = 34 || $(this.element).children().width(); //移动点的子元素的宽度    
+    this.childHeight = 14 || $(this.element).children().height(); //移动点的子元素的高度
+    this.warnChildWidth = 50;
+    this.warnChildHeight = 50;
 
     //控制点p1统一为
     this.controlX = 30; //离canvas做左侧的水平距离 统一为30；
@@ -140,27 +140,27 @@ function LightLoop(element, arr, type) {
                 obj.angle = Math.atan(obj.k) / 0.017453293 + 180; //根据斜率得到旋转角度，+180另外图标自身要换反方向
             }
             //根据比值this.radio变化计算点的坐标值；p=(1-this.radio)*(1-this.radio)p0+2*this.radio*(1-this.radio)*p1+this.radio*this.radio*p2;
-            if(arr[i].status==='warn'){
+            if (arr[i].status === 'warn') {
                 //固定中间
-                radio=0.5;
+                radio = 0.5;
                 obj.nowX = (1 - radio) * (1 - radio) * obj.startX + 2 * radio * (1 - radio) * this.controlX + radio * radio * obj.endX;
-                obj.nowY = (1 - radio) * (1 - radio) * obj.startY + 2 * radio * (1 - radio) * obj.controlY + radio * radio * obj.endY; 
+                obj.nowY = (1 - radio) * (1 - radio) * obj.startY + 2 * radio * (1 - radio) * obj.controlY + radio * radio * obj.endY;
                 $(this.element + ' .line-icon:eq(' + i + ')').css({
                     'left': obj.nowX - this.warnChildWidth / 2,
                     'top': obj.nowY - this.warnChildHeight / 2,
-                    'transform': 'rotate(' + obj.angle + 'deg)'
+                    //'transform': 'rotate(' + obj.angle + 'deg)'
                 });
-            }else{
+            } else {
                 obj.nowX = (1 - this.radio) * (1 - this.radio) * obj.startX + 2 * this.radio * (1 - this.radio) * this.controlX + this.radio * this.radio * obj.endX;
-                obj.nowY = (1 - this.radio) * (1 - this.radio) * obj.startY + 2 * this.radio * (1 - this.radio) * obj.controlY + this.radio * this.radio * obj.endY; 
+                obj.nowY = (1 - this.radio) * (1 - this.radio) * obj.startY + 2 * this.radio * (1 - this.radio) * obj.controlY + this.radio * this.radio * obj.endY;
                 $(this.element + ' .line-icon:eq(' + i + ')').css({
                     'left': obj.nowX - this.childWidth / 2,
                     'top': obj.nowY - this.childHeight / 2,
                     'transform': 'rotate(' + obj.angle + 'deg)'
                 });
             }
-            
-           
+
+
         }
     }
 
@@ -202,7 +202,7 @@ function CenterValueLoop() {
 function selfCustomScroll(n) {
     /* 仿滚动条 */
     var cityLength = $('.city-data-li').length;
-   
+
     $(".center-bottom").mCustomScrollbar({
         axis: "x", //"x","y",值为字符串，分别对应横纵向滚动
         // scrollButtons: {
@@ -218,97 +218,141 @@ function selfCustomScroll(n) {
  * @param {string}  element 作用对象dom
  * @param {Integer} n 自动滚动个数
  */
-function autoScrollFun(element,n) {
-    var isAuto=true;//是否自动滚动
-	var $this = $(element);
-	var scrollTimer=null;
-	$this.hover(function () {
-		clearInterval(scrollTimer);
-	}, function () {
-		scrollTimer = setInterval(function () {
-            if(isAuto){
-                scrollNews($this,n);
-            }
-		}, 2000);
-    }).trigger('mouseleave');	
+var nowIndex = 0;
 
-     //posLeft 允许滚动范围  $this.width-$('.city-data-list').width< posLeft<$('.city-data-list').width-$this.width
-     var $self =$this.find('ol');
-     var minLeft=$this.width()- $self.width();
-     var maxLeft=$self.width()-$this.width();
-     
-   //点击按钮-- 左箭头
- $("body").on('click','.prevButton', function () {
-    console.log('.prevButton',$self.css('left'),minLeft,maxLeft);
-    clearInterval(scrollTimer);
-    var posLeft=removePx($self.css('left'));
-    tranLeft=posLeft-$self.find('li').width() * n + 50 *n;
-    if(tranLeft< minLeft  ){
-        $self.css('left',minLeft+'px');
-        $('.nextButton').attr('disabled');
-    }else{
-        $self.css('left',tranLeft+'px');
-        //$('.nextButton').attr('disabled');
+function autoScrollFun(element, n) {
+
+    var isAuto = false; //是否自动滚动
+    var $this = $(element);
+    var scrollTimer = null;
+    $this.hover(function () {
+        clearInterval(scrollTimer);
+    }, function () {
+        scrollTimer = setInterval(function () {
+            if (isAuto) {
+                scrollNews($this, n);
+            }
+        }, 2000);
+    }).trigger('mouseleave');
+
+
+    var cityLength = $this.find('li').length;
+    var perUnitWidth = parseInt($this.find('li').width() + 50 + 2);
+    $this.find('ol').css('width', perUnitWidth * cityLength + 100 + 'px');
+    //posLeft 允许滚动范围  $this.width-$('.city-data-list').width< posLeft<$('.city-data-list').width-$this.width
+    var $self = $this.find('ol');
+    var minLeft = $this.width() - $self.width();
+    var maxLeft = 0;
+
+    //点击按钮-- 左箭头
+    $("body").on('click', '.prevButton', function () {
+        clearInterval(scrollTimer);
+        var tranLeft = removePx($self.css('left'));
+        var needGap = 0;
+        for (var i = nowIndex; i < nowIndex + n; i++) {
+            var liWidth = $self.find('li').eq(i).width() + 50 + 4;
+            needGap += liWidth;
+        }
+        tranLeft -= needGap;
+        $('.nextButton').removeClass('hidden');
+        if (tranLeft < minLeft) {
+            $self.animate({
+                left: minLeft + 'px'
+            }, 1000);
+            $('.prevButton').addClass('hidden');
+            nowIndex = cityLength - 5;
+        } else {
+            $self.animate({
+                left: tranLeft + 'px'
+            }, 1000);
+            nowIndex += n;
+        }
+        if (isAuto) {
+            setTimeout(function () {
+                scrollNews($this, n);
+            }, 5000)
+        }
+    })
+    //点击按钮-- 左箭头
+    $("body").on('click', '.nextButton', function () {
+        clearInterval(scrollTimer);
+        var tranLeft = removePx($self.css('left'));
+        var needGap = 0;
+        for (var i = nowIndex - n; i < nowIndex; i++) {
+            var liWidth = $self.find('li').eq(i).width() + 50 + 4;
+            needGap += liWidth;
+        }
+        tranLeft += needGap;
+        $('.prevButton').removeClass('hidden');
+        if (tranLeft > maxLeft) {
+            $self.animate({
+                left: maxLeft + 'px'
+            }, 1000);
+            $('.nextButton').addClass('hidden');
+            nowIndex = 0;
+        } else {
+
+            $self.animate({
+                left: tranLeft + 'px'
+            }, 1000);
+            nowIndex -= n;
+        }
+        if (isAuto) {
+            setTimeout(function () {
+                scrollNews($this, n);
+            }, 5000)
+        }
+    })
+    /**  
+     * 功能 使某个容器自动滚动 
+     * @param {Object} obj  需要滚动的容器
+     * @param {int} n  每次滚动的个数
+     */
+
+    function scrollNews(obj, n) {
+        if (obj.find('ol').length) {
+            var $self = obj.find('ol');
+            var tranLeft = removePx($self.css('left'));
+            var needGap = 0;
+            for (var i = 0; i < n; i++) {
+                var liWidth = $self.find('li').eq(i).width() + 50+4;
+                needGap += liWidth;
+            }
+            tranLeft -= needGap;
+            //获得第n个tr的高度
+            $('.prevButton').removeClass('hidden');
+            $('.nextButton').removeClass('hidden');
+            //并根据此高度向上移动
+            if (tranLeft > maxLeft) {
+                $self.animate({
+                    left: maxLeft + 'px'
+                }, 1000);
+                $('.nextButton').addClass('hidden');
+                nowIndex = 0;
+            } else if (tranLeft < minLeft) {
+                $self.animate({
+                    left: minLeft + 'px'
+                }, 1000);
+                $('.prevButton').addClass('hidden');
+                nowIndex = cityLength - 5;
+            } else {
+                $self.animate({
+                    left: tranLeft + 'px'
+                }, 1000);
+                nowIndex += n;
+            }
+        }
     }
-})
-//点击按钮-- 左箭头
-$("body").on('click', '.nextButton', function () {
-    console.log('.nextButton',$self.css('left'));
-    clearInterval(scrollTimer);
-    var posLeft=removePx($self.css('left'));
-    tranLeft=posLeft+$self.find('li').width() * n + 50 *n;
-    if(tranLeft> maxLeft  ){
-        $self.css('left',maxLeft+'px');
-        $('.prevButton').attr('disabled');
-    }else{
-        $self.css('left',tranLeft+'px');
-    }
-})
 }
 
- 
+
 
 /**  
  * 功能 去除字符串的‘px’,并转化为数字类型 
  * @param {string} str  需要处理的字符串
  */
-function removePx(str){
-    var i=str.indexOf('px');
-    var numStr=str.substring(0,i);
+function removePx(str) {
+    var i = str.indexOf('px');
+    var numStr = str.substring(0, i);
     return parseInt(numStr);
 }
-
-/**  
- * 功能 使某个容器自动滚动 
- * @param {Object} obj  需要滚动的容器
- * @param {int} n  每次滚动的个数
- */
-
-function scrollNews(obj,n) {
-    $('.mCSB_container').css('left',0);
-	if (obj.find('ol').length) {
-        var $self = obj.find('ol');
-        //$self.css('left',0);
-        var tranLeft=removePx($self.css('left'));
-        for(var i=0;i<n;i++){
-            var liWidth = $self.find('li').eq(i).width()+50;
-            tranLeft+=liWidth;
-        }
-		//获得第n个tr的高度
-       
-		//并根据此高度向上移动
-		$self.animate({
-			'left': -tranLeft + 'px'
-		}, 1000, function () {
-            
-			$self.css({
-				left: 0
-				//恢复marginTop,将第一个tr元素，排列放置到末尾，达到循环播放的目的
-            });
-            for(var i=0;i<n;i++){
-               $self.find('li:first').appendTo($self);
-            }
-		})
-	}
-}
-
