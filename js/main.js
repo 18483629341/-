@@ -231,7 +231,7 @@ function autoScrollFun(element, n) {
             if (isAuto) {
                 scrollNews($this, n);
             }
-        },3000);
+        },20000);
     }).trigger('mouseleave');
 
 
@@ -341,8 +341,6 @@ function autoScrollFun(element, n) {
         }
     }
 }
-
-
 
 /**  
  * 功能 去除字符串的‘px’,并转化为数字类型 
