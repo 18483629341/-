@@ -409,46 +409,51 @@
 }
 
 .line-icon.warn {
-    width: 50px;
-    height: 50px;
-    //background: url(../images/home/red.gif) no-repeat;
-    background: #fff;
+    width: 36px;
+    height: 36px;
+    background: url(../images/home/red_dot.png) no-repeat;
+    //background: #fff;
     z-index: 5;
-    -webkit-animation: scaleLine 10s  infinite;
-    -moz-animation: scaleLine 10s infinite;
-    animation: scaleLine 10s  infinite;
+    
+    -webkit-animation: scaleLine 3s  infinite;
+    -moz-animation: scaleLine 3s infinite;
+    animation: scaleLine 3s  infinite;
+
 }
 
 @-webkit-keyframes scaleLine {
-    from {
-        transform: scale(1);
-        opacity: 1;
+    0%{
+        -webkit-transform: scale(1);
     }
-    to {
-        transform: scale(0.2);
-        opacity: .2;
+    50% {
+        -webkit-transform: scale(0.6);
+    }
+    100%{
+        -webkit-transform: scale(1);
     }
 }
 
 @-moz-keyframes scaleLine {
-    from {
+    0%{
         -moz-transform: scale(1);
-        opacity: 1;
     }
-    to {
-        -moz-transform: scale(0.2);
-        opacity: .2;
+    50% {
+        -moz-transform: scale(0.6);
+    }
+    100%{
+        -moz-transform: scale(1);
     }
 }
 
 @keyframes scaleLine {
-    from {
-        -webkit-transform: scale(1);
-        opacity: 1;
+    0%{
+        transform: scale(1);
     }
-    to {
-        -webkit-transform: scale(0.2);
-        opacity: .2;
+    50% {
+       transform: scale(0.6);
+    }
+    100%{
+        transform: scale(1);
     }
 }
 
@@ -749,7 +754,7 @@
 
 /* 中间底部 */
 .bottom-box{
-    width:1076px;
+    width:1056px;
     height: 206px;
     margin: -65px 0 0 -40px;
     flex-direction: row;
@@ -763,6 +768,7 @@
         position: relative;
         top: 50px;  
         visibility: visible; 
+        cursor: pointer;
     }
     .prevButton.hidden, .nextButton.hidden {
         visibility: hidden;
@@ -781,7 +787,7 @@
     }
 }
 .center-bottom {
-    width:990px;
+    width:970px;
     height: 100%;
     overflow: hidden;
     //border: 1px solid yellow;

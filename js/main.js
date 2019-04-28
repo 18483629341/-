@@ -90,8 +90,8 @@ function LightLoop(element, arr, type) {
     this.perHeight = parseInt(this.boxHeight / this.n);
     this.childWidth = 34 || $(this.element).children().width(); //移动点的子元素的宽度    
     this.childHeight = 14 || $(this.element).children().height(); //移动点的子元素的高度
-    this.warnChildWidth = 50;
-    this.warnChildHeight = 50;
+    this.warnChildWidth = 36;
+    this.warnChildHeight = 36;
 
     //控制点p1统一为
     this.controlX = 30; //离canvas做左侧的水平距离 统一为30；
@@ -147,8 +147,7 @@ function LightLoop(element, arr, type) {
                 obj.nowY = (1 - radio) * (1 - radio) * obj.startY + 2 * radio * (1 - radio) * obj.controlY + radio * radio * obj.endY;
                 $(this.element + ' .line-icon:eq(' + i + ')').css({
                     'left': obj.nowX - this.warnChildWidth / 2,
-                    'top': obj.nowY - this.warnChildHeight / 2,
-                    //'transform': 'rotate(' + obj.angle + 'deg)'
+                    'top': obj.nowY - this.warnChildHeight / 2
                 });
             } else {
                 obj.nowX = (1 - this.radio) * (1 - this.radio) * obj.startX + 2 * this.radio * (1 - this.radio) * this.controlX + this.radio * this.radio * obj.endX;
@@ -222,22 +221,22 @@ var nowIndex = 0;
 
 function autoScrollFun(element, n) {
 
-    var isAuto = false; //是否自动滚动
+    var isAuto = true; //是否自动滚动
     var $this = $(element);
     var scrollTimer = null;
-    $this.hover(function () {
+    $(element).parent().hover(function () {
         clearInterval(scrollTimer);
     }, function () {
         scrollTimer = setInterval(function () {
             if (isAuto) {
                 scrollNews($this, n);
             }
-        }, 2000);
+        },3000);
     }).trigger('mouseleave');
 
 
     var cityLength = $this.find('li').length;
-    var perUnitWidth = parseInt($this.find('li').width() + 50 + 2);
+    var perUnitWidth = parseInt($this.find('li').width() + 50 );
     $this.find('ol').css('width', perUnitWidth * cityLength + 100 + 'px');
     //posLeft 允许滚动范围  $this.width-$('.city-data-list').width< posLeft<$('.city-data-list').width-$this.width
     var $self = $this.find('ol');
@@ -246,16 +245,16 @@ function autoScrollFun(element, n) {
 
     //点击按钮-- 左箭头
     $("body").on('click', '.prevButton', function () {
-        clearInterval(scrollTimer);
-        var tranLeft = removePx($self.css('left'));
+        //clearInterval(scrollTimer);
+        var leftPos = removePx($self.css('left'));
         var needGap = 0;
         for (var i = nowIndex; i < nowIndex + n; i++) {
             var liWidth = $self.find('li').eq(i).width() + 50 + 4;
             needGap += liWidth;
         }
-        tranLeft -= needGap;
+        leftPos -= needGap;
         $('.nextButton').removeClass('hidden');
-        if (tranLeft < minLeft) {
+        if (leftPos < minLeft) {
             $self.animate({
                 left: minLeft + 'px'
             }, 1000);
@@ -263,28 +262,24 @@ function autoScrollFun(element, n) {
             nowIndex = cityLength - 5;
         } else {
             $self.animate({
-                left: tranLeft + 'px'
+                left: leftPos + 'px'
             }, 1000);
             nowIndex += n;
         }
-        if (isAuto) {
-            setTimeout(function () {
-                scrollNews($this, n);
-            }, 5000)
-        }
-    })
+    });
+
     //点击按钮-- 左箭头
     $("body").on('click', '.nextButton', function () {
-        clearInterval(scrollTimer);
-        var tranLeft = removePx($self.css('left'));
+        //clearInterval(scrollTimer);
+        var leftPos = removePx($self.css('left'));
         var needGap = 0;
         for (var i = nowIndex - n; i < nowIndex; i++) {
             var liWidth = $self.find('li').eq(i).width() + 50 + 4;
             needGap += liWidth;
         }
-        tranLeft += needGap;
+        leftPos += needGap;
         $('.prevButton').removeClass('hidden');
-        if (tranLeft > maxLeft) {
+        if (leftPos > maxLeft) {
             $self.animate({
                 left: maxLeft + 'px'
             }, 1000);
@@ -293,14 +288,9 @@ function autoScrollFun(element, n) {
         } else {
 
             $self.animate({
-                left: tranLeft + 'px'
+                left: leftPos + 'px'
             }, 1000);
             nowIndex -= n;
-        }
-        if (isAuto) {
-            setTimeout(function () {
-                scrollNews($this, n);
-            }, 5000)
         }
     })
     /**  
@@ -312,35 +302,42 @@ function autoScrollFun(element, n) {
     function scrollNews(obj, n) {
         if (obj.find('ol').length) {
             var $self = obj.find('ol');
-            var tranLeft = removePx($self.css('left'));
+            var oldLeft = removePx($self.css('left'));
             var needGap = 0;
             for (var i = 0; i < n; i++) {
-                var liWidth = $self.find('li').eq(i).width() + 50+4;
+                //获得第n个li的高度
+                var liWidth = $self.find('li').eq(i).width() + 50;
                 needGap += liWidth;
             }
-            tranLeft -= needGap;
-            //获得第n个tr的高度
+            leftPos = oldLeft-needGap;
+            
             $('.prevButton').removeClass('hidden');
             $('.nextButton').removeClass('hidden');
+
             //并根据此高度向上移动
-            if (tranLeft > maxLeft) {
+            if (leftPos > maxLeft) {
                 $self.animate({
                     left: maxLeft + 'px'
-                }, 1000);
+                }, 1000,function(){back();});
                 $('.nextButton').addClass('hidden');
-                nowIndex = 0;
-            } else if (tranLeft < minLeft) {
+            } else if (leftPos < minLeft) {
                 $self.animate({
                     left: minLeft + 'px'
-                }, 1000);
+                }, 1000,function(){back();});
                 $('.prevButton').addClass('hidden');
-                nowIndex = cityLength - 5;
             } else {
                 $self.animate({
-                    left: tranLeft + 'px'
-                }, 1000);
-                nowIndex += n;
+                    left: leftPos + 'px'
+                }, 1000,function(){back();});
             }
+
+            //恢复left,将第一个li元素，排列放置到末尾，达到循环播放的目的
+            function back(){
+                $self.css({left: oldLeft+'px'});
+                for(var i=0;i<n;i++){
+                    $self.find('li:first').appendTo($self);
+                }
+            }  
         }
     }
 }

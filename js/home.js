@@ -1,9 +1,7 @@
 $(function () {
-    //各市区信息显示模块：鼠标滚动时水平移动/自动滚动/点击左箭头，左滚动/点击右箭头右滚动
-    //selfCustomScroll(5); 
-
-    //自动水平滚动  
-    autoScrollFun(".center-bottom",2);
+   
+    //自动水平滚动和左右按钮的水平滚动
+    autoScrollFun(".center-bottom",5);
     //tooltip的弹窗控制
     toggleTooltip();
    
